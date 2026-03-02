@@ -22,9 +22,12 @@ jobs:
             exit 1
           fi
 
+      # PAT is required so the tag push triggers the Release workflow.
+      # GITHUB_TOKEN pushes are intentionally prevented from triggering further workflows.
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.PAT }}
 
       - name: Bump major version and push tag
         shell: bash
