@@ -75,6 +75,8 @@ static class Loc
             "hi" => Hi,
             "sv" => Sv,
             "no" => No,
+            "nb" => No,
+            "nn" => No,
             "fi" => Fi,
             "et" => Et,
             "lv" => Lv,
