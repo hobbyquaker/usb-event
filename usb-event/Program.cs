@@ -257,6 +257,14 @@ class Program
         key.SetValue(AppDisplayName, $"\"{exePath}\" --tray");
         Console.WriteLine(string.Format(Loc.T.AutostartInstalled, exePath));
         Console.WriteLine(Loc.T.AutostartInfo);
+
+        Console.Write(Loc.T.AutostartStartNow);
+        var answer = Console.ReadLine() ?? string.Empty;
+        if (answer.Length == 0 || (!answer.StartsWith("n", StringComparison.OrdinalIgnoreCase)
+                                && !answer.StartsWith("н", StringComparison.OrdinalIgnoreCase)))
+        {
+            Process.Start(new ProcessStartInfo(exePath, "--tray") { UseShellExecute = true });
+        }
     }
 
     static void UninstallAutostart()

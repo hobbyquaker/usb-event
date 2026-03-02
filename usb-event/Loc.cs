@@ -35,6 +35,7 @@ sealed class LocStrings
     public required string AutostartInstalled { get; init; }
     public required string AutostartInfo { get; init; }
     public required string AutostartRemoved { get; init; }
+    public required string AutostartStartNow { get; init; }
 
     public required string RawLabel { get; init; }
     public required string BtnSave { get; init; }
@@ -122,6 +123,7 @@ static class Loc
         AutostartInstalled = "✔ Autostart registered: {0} --tray",
         AutostartInfo = "  The app will start in the tray at next login.",
         AutostartRemoved = "✔ Autostart entry removed.",
+        AutostartStartNow = "Start in background now? [Y/n] ",
 
         RawLabel = "Raw YAML",
         BtnSave = "Save",
@@ -173,6 +175,7 @@ static class Loc
         AutostartInstalled = "✔ Autostart eingerichtet: {0} --tray",
         AutostartInfo = "  Die Anwendung startet beim nächsten Login automatisch im Hintergrund.",
         AutostartRemoved = "✔ Autostart-Eintrag entfernt.",
+        AutostartStartNow = "Jetzt im Hintergrund starten? [J/n] ",
 
         RawLabel = "Raw YAML",
         BtnSave = "Speichern",
@@ -224,6 +227,7 @@ static class Loc
         AutostartInstalled = "✔ Autostart enregistré : {0} --tray",
         AutostartInfo = "  L'application démarrera dans le tray à la prochaine ouverture de session.",
         AutostartRemoved = "✔ Entrée d'autostart supprimée.",
+        AutostartStartNow = "Démarrer en arrière-plan maintenant ? [O/n] ",
 
         RawLabel = "YAML brut",
         BtnSave = "Enregistrer",
@@ -275,6 +279,7 @@ static class Loc
         AutostartInstalled = "✔ Inicio automático registrado: {0} --tray",
         AutostartInfo = "  La app se iniciará en el tray en el próximo inicio de sesión.",
         AutostartRemoved = "✔ Entrada de inicio automático eliminada.",
+        AutostartStartNow = "¿Iniciar en segundo plano ahora? [S/n] ",
 
         RawLabel = "YAML sin formato",
         BtnSave = "Guardar",
@@ -326,6 +331,7 @@ static class Loc
         AutostartInstalled = "✔ Автозапуск зарегистрирован: {0} --tray",
         AutostartInfo = "  Приложение запустится в трее при следующем входе.",
         AutostartRemoved = "✔ Запись автозапуска удалена.",
+        AutostartStartNow = "Запустить в фоне сейчас? [Д/н] ",
 
         RawLabel = "Raw YAML",
         BtnSave = "Сохранить",
@@ -377,6 +383,7 @@ static class Loc
         AutostartInstalled = "✔ 自動起動を登録: {0} --tray",
         AutostartInfo = "  次回ログイン時にトレイで自動起動します。",
         AutostartRemoved = "✔ 自動起動エントリを削除しました。",
+        AutostartStartNow = "今すぐバックグラウンドで起動しますか？ [Y/n] ",
 
         RawLabel = "Raw YAML",
         BtnSave = "保存",
@@ -428,6 +435,7 @@ static class Loc
         AutostartInstalled = "✔ 已注册自启动: {0} --tray",
         AutostartInfo = "  应用将在下次登录时在托盘中启动。",
         AutostartRemoved = "✔ 已移除自启动项。",
+        AutostartStartNow = "现在在后台启动？[Y/n] ",
 
         RawLabel = "原始 YAML",
         BtnSave = "保存",
@@ -479,6 +487,7 @@ static class Loc
         AutostartInstalled = "✔ تم تسجيل التشغيل التلقائي: {0} --tray",
         AutostartInfo = "  سيبدأ التطبيق في شريط المهام عند تسجيل الدخول التالي.",
         AutostartRemoved = "✔ تمت إزالة إدخال التشغيل التلقائي.",
+        AutostartStartNow = "البدء في الخلفية الآن؟ [Y/n] ",
 
         RawLabel = "YAML خام",
         BtnSave = "حفظ",
@@ -530,6 +539,7 @@ static class Loc
         AutostartInstalled = "✔ Mulai otomatis terdaftar: {0} --tray",
         AutostartInfo = "  Aplikasi akan mulai di tray saat login berikutnya.",
         AutostartRemoved = "✔ Entri mulai otomatis dihapus.",
+        AutostartStartNow = "Mulai di latar belakang sekarang? [Y/n] ",
 
         RawLabel = "YAML mentah",
         BtnSave = "Simpan",
@@ -581,6 +591,7 @@ static class Loc
         AutostartInstalled = "✔ 자동 시작 등록됨: {0} --tray",
         AutostartInfo = "  다음 로그인 시 앱이 트레이에서 자동으로 시작됩니다.",
         AutostartRemoved = "✔ 자동 시작 항목이 제거되었습니다.",
+        AutostartStartNow = "지금 백그라운드에서 시작하시겠습니까? [Y/n] ",
 
         RawLabel = "Raw YAML",
         BtnSave = "저장",
@@ -632,6 +643,7 @@ static class Loc
         AutostartInstalled = "✔ Inicialização automática registrada: {0} --tray",
         AutostartInfo = "  O aplicativo iniciará na bandeja no próximo login.",
         AutostartRemoved = "✔ Entrada de inicialização automática removida.",
+        AutostartStartNow = "Iniciar em segundo plano agora? [Y/n] ",
 
         RawLabel = "YAML bruto",
         BtnSave = "Salvar",
@@ -683,6 +695,7 @@ static class Loc
         AutostartInstalled = "✔ ऑटोस्टार्ट पंजीकृत: {0} --tray",
         AutostartInfo = "  अगले लॉगिन पर ऐप ट्रे में शुरू होगा।",
         AutostartRemoved = "✔ ऑटोस्टार्ट प्रविष्टि हटाई गई।",
+        AutostartStartNow = "अभी पृष्ठभूमि में प्रारंभ करें? [Y/n] ",
 
         RawLabel = "Raw YAML",
         BtnSave = "सहेजें",
@@ -734,6 +747,7 @@ static class Loc
         AutostartInstalled = "✔ Autostart registrerad: {0} --tray",
         AutostartInfo = "  Appen startar i fältet vid nästa inloggning.",
         AutostartRemoved = "✔ Autostart-post borttagen.",
+        AutostartStartNow = "Starta i bakgrunden nu? [J/n] ",
 
         RawLabel = "Rå YAML",
         BtnSave = "Spara",
@@ -785,6 +799,7 @@ static class Loc
         AutostartInstalled = "✔ Autostart registrert: {0} --tray",
         AutostartInfo = "  Appen starter i systemfeltet ved neste innlogging.",
         AutostartRemoved = "✔ Autostart-oppføring fjernet.",
+        AutostartStartNow = "Starte i bakgrunnen nå? [J/n] ",
 
         RawLabel = "Rå YAML",
         BtnSave = "Lagre",
@@ -836,6 +851,7 @@ static class Loc
         AutostartInstalled = "✔ Automaattinen käynnistys rekisteröity: {0} --tray",
         AutostartInfo = "  Sovellus käynnistyy ilmaisinalueella seuraavalla kirjautumiskerralla.",
         AutostartRemoved = "✔ Automaattinen käynnistys -merkintä poistettu.",
+        AutostartStartNow = "Käynnistetäänkö taustalla nyt? [K/n] ",
 
         RawLabel = "Raaka YAML",
         BtnSave = "Tallenna",
@@ -887,6 +903,7 @@ static class Loc
         AutostartInstalled = "✔ Automaatkäivitus registreeritud: {0} --tray",
         AutostartInfo = "  Rakendus käivitub salve järgmisel sisselogimisel.",
         AutostartRemoved = "✔ Automaatkäivituse kirje eemaldatud.",
+        AutostartStartNow = "Käivitada taustal kohe? [J/n] ",
 
         RawLabel = "Toores YAML",
         BtnSave = "Salvesta",
@@ -938,6 +955,7 @@ static class Loc
         AutostartInstalled = "✔ Automātiskā startēšana reģistrēta: {0} --tray",
         AutostartInfo = "  Lietotne startēs paziņojumu apgabalā nākamajā pieteikšanās reizē.",
         AutostartRemoved = "✔ Automātiskās startēšanas ieraksts noņemts.",
+        AutostartStartNow = "Startēt fonā tagad? [J/n] ",
 
         RawLabel = "Neapstrādāts YAML",
         BtnSave = "Saglabāt",
@@ -989,6 +1007,7 @@ static class Loc
         AutostartInstalled = "✔ Automatinis paleidimas užregistruotas: {0} --tray",
         AutostartInfo = "  Programa bus paleista sisteminėje juostoje kito prisijungimo metu.",
         AutostartRemoved = "✔ Automatinio paleidimo įrašas pašalintas.",
+        AutostartStartNow = "Paleisti fone dabar? [T/n] ",
 
         RawLabel = "Neapdorotas YAML",
         BtnSave = "Išsaugoti",
@@ -1040,6 +1059,7 @@ static class Loc
         AutostartInstalled = "✔ Autostart zarejestrowany: {0} --tray",
         AutostartInfo = "  Aplikacja uruchomi się w zasobniku przy następnym logowaniu.",
         AutostartRemoved = "✔ Wpis autostartu usunięty.",
+        AutostartStartNow = "Uruchomić w tle teraz? [T/n] ",
 
         RawLabel = "Surowy YAML",
         BtnSave = "Zapisz",
@@ -1091,6 +1111,7 @@ static class Loc
         AutostartInstalled = "✔ Automatické spuštění registrováno: {0} --tray",
         AutostartInfo = "  Aplikace se spustí na hlavním panelu při příštím přihlášení.",
         AutostartRemoved = "✔ Záznam automatického spuštění odebrán.",
+        AutostartStartNow = "Spustit na pozadí nyní? [A/n] ",
 
         RawLabel = "Surový YAML",
         BtnSave = "Uložit",
@@ -1142,6 +1163,7 @@ static class Loc
         AutostartInstalled = "✔ Automatsko pokretanje registrirano: {0} --tray",
         AutostartInfo = "  Aplikacija će se pokrenuti u sistemskoj traci pri sljedećoj prijavi.",
         AutostartRemoved = "✔ Unos automatskog pokretanja uklonjen.",
+        AutostartStartNow = "Pokrenuti u pozadini sada? [D/n] ",
 
         RawLabel = "Sirovi YAML",
         BtnSave = "Spremi",
@@ -1193,6 +1215,7 @@ static class Loc
         AutostartInstalled = "✔ Nisja automatike u regjistrua: {0} --tray",
         AutostartInfo = "  Aplikacioni do të niset në ikonën e sistemit në hyrjen tjetër.",
         AutostartRemoved = "✔ Shënimi i nisjes automatike u hoq.",
+        AutostartStartNow = "Të niset në sfond tani? [P/n] ",
 
         RawLabel = "YAML i papërpunuar",
         BtnSave = "Ruaj",
