@@ -368,7 +368,7 @@ class Program
         return sb.ToString();
     }
 
-    static Icon CreateTrayIcon()
+    internal static Icon CreateTrayIcon()
     {
         const int S = 48;
         using var bmp = new Bitmap(S, S);
