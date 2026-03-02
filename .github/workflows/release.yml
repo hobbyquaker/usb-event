@@ -31,14 +31,17 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
-          # Remove the line below once .NET 10 is GA
-          dotnet-quality: 'preview'
 
       - name: Publish portable
         run: >
           dotnet publish usb-event/usb-event.csproj
-          /p:PublishProfile=portable
-          /p:Version=${{ steps.version.outputs.VERSION }}
+          -c Release
+          -r win-x64
+          --no-self-contained
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:PublishDir=bin/Publish/
+          -p:Version=${{ steps.version.outputs.VERSION }}
 
       - name: Rename artifact
         shell: pwsh
