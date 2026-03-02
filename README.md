@@ -26,11 +26,6 @@ Get the [latest release](https://github.com/hobbyquaker/usb-event/releases/lates
 
 The **installer** is recommended because it sets up autostart comfortably and places the config in a standard user directory.
 
-## How to use (quick) ⚡ (Windows only)
-- Put your mappings into `config.yaml` (see config location in the table above) 📝
-- Run once in console to see device IDs, then switch to `--tray` 🖥️➡️🧺
-- Autostart? `usb-event.exe --install` (remove with `--uninstall`) 🔁
-
 ## License
 MIT License. See below.
 
