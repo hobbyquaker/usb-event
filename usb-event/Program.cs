@@ -268,19 +268,33 @@ class Program
 
     // ── Hilfsmethoden ──────────────────────────────────────────────────────────
 
-    // Portable: config.yaml next to the .exe takes precedence (e.g. USB-stick).
+    // Portable: config.yaml next to the .exe AND the directory is writable (e.g. USB-stick).
     // Installed: falls back to %APPDATA%\usb-event\ (Windows convention).
+    //            Program Files is never writable without elevation, so it always falls back.
     static string GetConfigDir()
     {
-        var portable = Path.Combine(AppContext.BaseDirectory, "config.yaml");
-        if (File.Exists(portable))
-            return AppContext.BaseDirectory;
+        var baseDir        = AppContext.BaseDirectory;
+        var portableConfig = Path.Combine(baseDir, "config.yaml");
+        if (File.Exists(portableConfig) && IsDirectoryWritable(baseDir))
+            return baseDir;
 
         var dir = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "usb-event");
         Directory.CreateDirectory(dir);
         return dir;
+    }
+
+    static bool IsDirectoryWritable(string dir)
+    {
+        try
+        {
+            var probe = Path.Combine(dir, ".write-probe");
+            File.WriteAllText(probe, "");
+            File.Delete(probe);
+            return true;
+        }
+        catch { return false; }
     }
 
     static bool EnsureConfigExists(string path)
