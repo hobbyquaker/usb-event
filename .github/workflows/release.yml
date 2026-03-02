@@ -58,4 +58,4 @@ jobs:
             > **Requires [.NET 10 Desktop Runtime (x64)](https://dotnet.microsoft.com/download/dotnet/10.0)** to be installed.
           generate_release_notes: true
           fail_on_unmatched_files: true
-          files: usb-event\bin\Publish\usb-event-${{ steps.version.outputs.TAG }}.exe
+          files: usb-event/bin/Publish/usb-event-${{ steps.version.outputs.TAG }}.exe
