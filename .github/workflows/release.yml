@@ -68,6 +68,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: "${{ steps.version.outputs.TAG }}"
           name: "${{ steps.version.outputs.TAG }}"
           body: |
             > **Requires [.NET 10 Desktop Runtime (x64)](https://dotnet.microsoft.com/download/dotnet/10.0)** to be installed.
