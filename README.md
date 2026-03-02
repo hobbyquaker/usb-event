@@ -12,8 +12,22 @@ No-nonsense helper for Windows users with too many USB toys: plug something in, 
 - Dark mode aware, tray-native, YAML-savvy 🌙📜
 - Zero fluff, minimal clicks 🪶🖱️
 
+## Download ⬇️
+Get the [latest release](https://github.com/hobbyquaker/usb-event/releases/latest) — two flavors available:
+
+| | Portable | Installer ✅ recommended |
+|---|---|---|
+| **File** | `usb-event-vX.Y.Z-portable.exe` | `usb-event-vX.Y.Z-installer.exe` |
+| **Setup** | Drop anywhere, run directly | Guided install wizard |
+| **Autostart** | `usb-event.exe --install` / `--uninstall` | Comfortable autostart option during setup |
+| **Config location** | Next to the .exe | `%APPDATA%\usb-event\` |
+
+> **Requires [.NET 10 Desktop Runtime (x64)](https://dotnet.microsoft.com/download/dotnet/10.0)** to be installed.
+
+The **installer** is recommended because it sets up autostart comfortably and places the config in a standard user directory.
+
 ## How to use (quick) ⚡ (Windows only)
-- Put your mappings into `config.yaml` (next to the exe) 📝
+- Put your mappings into `config.yaml` (see config location in the table above) 📝
 - Run once in console to see device IDs, then switch to `--tray` 🖥️➡️🧺
 - Autostart? `usb-event.exe --install` (remove with `--uninstall`) 🔁
 
