@@ -12,6 +12,7 @@ sealed class ConfigEditorForm : Form
 {
     readonly string _configPath;
     readonly Action _onSaved;
+    readonly Icon?  _formIcon;
 
     readonly CheckBox _rawCheck;
     readonly TextBox  _rawTextBox;
@@ -35,6 +36,7 @@ sealed class ConfigEditorForm : Form
         Size          = new Size(720, 580);
         MinimumSize   = new Size(520, 420);
         StartPosition = FormStartPosition.CenterScreen;
+        Icon          = _formIcon = Program.CreateTrayIcon();
         BackColor     = Bg;
         ForeColor     = TextNorm;
         Font          = new Font("Segoe UI", 9.5f);
@@ -439,6 +441,12 @@ sealed class ConfigEditorForm : Form
         b.FlatAppearance.MouseOverBackColor = Theme.Dark ? Color.FromArgb(76, 76, 76) : Color.FromArgb(225, 225, 225);
         b.FlatAppearance.MouseDownBackColor = Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.FromArgb(210, 210, 210);
         return b;
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing) _formIcon?.Dispose();
+        base.Dispose(disposing);
     }
 }
 
