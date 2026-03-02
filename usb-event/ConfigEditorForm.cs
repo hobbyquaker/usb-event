@@ -304,7 +304,7 @@ sealed class ConfigEditorForm : Form
                     popup.Items.Add(label, null, (_, _) => txtId.Text = captured);
                 }
             }
-            popup.Show(historyBtn, new Point(0, historyBtn.Height));
+            popup.Show(txtId, new Point(0, txtId.Height));
         };
 
         card.Controls.AddRange(new Control[]
