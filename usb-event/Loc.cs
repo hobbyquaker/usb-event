@@ -1137,7 +1137,7 @@ static class Loc
 
         CannotResolveProcessPath = "Nije moguće odrediti putanju procesa.",
         AutostartDotnetWarning = "⚠ Automatsko pokretanje može se instalirati samo s objavljenim .exe-om.",
-        AutostartPublishHint = "  Najprijed pokrenite 'dotnet publish'.",
+        AutostartPublishHint = "  Najprije pokrenite 'dotnet publish'.",
         RegistryNotAccessible = "Ključ registra nije dostupan.",
         AutostartInstalled = "✔ Automatsko pokretanje registrirano: {0} --tray",
         AutostartInfo = "  Aplikacija će se pokrenuti u sistemskoj traci pri sljedećoj prijavi.",
