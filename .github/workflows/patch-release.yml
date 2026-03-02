@@ -1,0 +1,57 @@
+name: Patch Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-bump
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ensure default branch
+        run: |
+          if [ "${{ github.ref_name }}" != "${{ github.event.repository.default_branch }}" ]; then
+            echo "::error::This workflow must be run from the default branch (${{ github.event.repository.default_branch }}), not '${{ github.ref_name }}'."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump patch version and push tag
+        shell: bash
+        run: |
+          LATEST=$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+          if [ -z "$LATEST" ]; then
+            LATEST="v0.0.0"
+          fi
+          VERSION="${LATEST#v}"
+          MAJOR=$(echo "$VERSION" | cut -d. -f1)
+          MINOR=$(echo "$VERSION" | cut -d. -f2)
+          PATCH=$(echo "$VERSION" | cut -d. -f3)
+
+          PATCH=$((PATCH + 1))
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+          NEW_TAG="v$NEW_VERSION"
+
+          sed -i "s|<Version>[^<]*</Version>|<Version>$NEW_VERSION</Version>|" usb-event/usb-event.csproj
+
+          if ! git diff --quiet usb-event/usb-event.csproj; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add usb-event/usb-event.csproj
+            git commit -m "chore: bump version to $NEW_VERSION"
+            git tag "$NEW_TAG"
+            git push origin HEAD "$NEW_TAG"
+          else
+            echo "::error::<Version> element not updated in .csproj; aborting release."
+            exit 1
+          fi
