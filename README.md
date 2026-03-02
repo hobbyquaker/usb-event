@@ -1,6 +1,6 @@
 # usb-event 🚀🧸
 
-No-nonsense helper for people with too many USB toys: plug something in, launch what you need; unplug, shut it down. Lives quietly in your tray, speaks multiple languages, and just works. 🧘‍♂️🔌
+No-nonsense helper for Windows users with too many USB toys: plug something in, launch what you need; unplug, shut it down. Lives quietly in your tray, speaks multiple languages, and just works. 🧘‍♂️🔌
 
 ## What it’s for 🎯
 - Auto-launch your streaming stack when the camera/mic shows up 📹🎙️
@@ -44,3 +44,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```

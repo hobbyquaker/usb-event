@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: write
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        shell: bash
+        run: |
+          TAG="${{ github.ref_name }}"
+          echo "TAG=$TAG" >> "$GITHUB_OUTPUT"
+          echo "VERSION=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          # Remove the line below once .NET 10 is GA
+          dotnet-quality: 'preview'
+
+      - name: Publish portable
+        run: >
+          dotnet publish usb-event/usb-event.csproj
+          /p:PublishProfile=portable
+          /p:Version=${{ steps.version.outputs.VERSION }}
+
+      - name: Rename artifact
+        shell: pwsh
+        run: >
+          Rename-Item
+          -Path "usb-event\bin\Publish\usb-event.exe"
+          -NewName "usb-event-${{ steps.version.outputs.TAG }}.exe"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "${{ steps.version.outputs.TAG }}"
+          body: |
+            > **Requires [.NET 10 Desktop Runtime (x64)](https://dotnet.microsoft.com/download/dotnet/10.0)** to be installed.
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: usb-event\bin\Publish\usb-event-${{ steps.version.outputs.TAG }}.exe
