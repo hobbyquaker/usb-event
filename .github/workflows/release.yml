@@ -43,12 +43,20 @@ jobs:
           -p:PublishDir=bin/Publish/
           -p:Version=${{ steps.version.outputs.VERSION }}
 
-      - name: Rename artifact
+      - name: Build installer
+        shell: pwsh
+        run: >
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          /DMyVersion=${{ steps.version.outputs.VERSION }}
+          /DMyTag=${{ steps.version.outputs.TAG }}
+          usb-event\installer.iss
+
+      - name: Rename portable artifact
         shell: pwsh
         run: >
           Rename-Item
           -Path "usb-event\bin\Publish\usb-event.exe"
-          -NewName "usb-event-${{ steps.version.outputs.TAG }}.exe"
+          -NewName "usb-event-${{ steps.version.outputs.TAG }}-portable.exe"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -58,4 +66,6 @@ jobs:
             > **Requires [.NET 10 Desktop Runtime (x64)](https://dotnet.microsoft.com/download/dotnet/10.0)** to be installed.
           generate_release_notes: true
           fail_on_unmatched_files: true
-          files: usb-event/bin/Publish/usb-event-${{ steps.version.outputs.TAG }}.exe
+          files: |
+            usb-event/bin/Publish/usb-event-${{ steps.version.outputs.TAG }}-portable.exe
+            usb-event/bin/Publish/usb-event-${{ steps.version.outputs.TAG }}-installer.exe
