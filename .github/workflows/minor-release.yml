@@ -13,6 +13,8 @@ concurrency:
 jobs:
   bump:
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.bump.outputs.tag }}
 
     steps:
       - name: Ensure default branch
@@ -22,14 +24,13 @@ jobs:
             exit 1
           fi
 
-      # PAT is required so the tag push triggers the Release workflow.
-      # GITHUB_TOKEN pushes are intentionally prevented from triggering further workflows.
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT || github.token }}
 
       - name: Bump minor version and push tag
+        id: bump
         shell: bash
         run: |
           LATEST=$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
@@ -53,7 +54,16 @@ jobs:
             git commit -m "chore: bump version to $NEW_VERSION"
             git tag "$NEW_TAG"
             git push origin HEAD "$NEW_TAG"
+            echo "tag=$NEW_TAG" >> "$GITHUB_OUTPUT"
           else
             echo "::error::<Version> element not updated in .csproj; aborting release."
             exit 1
           fi
+
+  release:
+    needs: bump
+    uses: ./.github/workflows/release.yml
+    with:
+      tag: ${{ needs.bump.outputs.tag }}
+    permissions:
+      contents: write
