@@ -1,0 +1,10 @@
+# USB device mappings (example)
+# deviceId:    Prefix of the device ID (as shown in the monitor output under "DeviceID")
+#              VID/PID prefix is enough, e.g. "USB\VID_1234&PID_ABCD"
+# executable:  Full path to the .exe to launch
+# arguments:   (optional) command-line arguments
+
+devices:
+  - deviceId: 'USB\VID_1234&PID_ABCD'
+    executable: 'C:\\Path\\to\\App.exe'
+    arguments: '--optional'

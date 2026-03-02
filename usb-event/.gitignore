@@ -1,0 +1,25 @@
+## Ignore build outputs
+bin/
+obj/
+
+## User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Logs
+*.log
+
+## IDE
+.vs/
+.idea/
+*.code-workspace
+
+## Publish outputs
+*.publish*/
+
+## Misc
+Thumbs.db
+Desktop.ini
