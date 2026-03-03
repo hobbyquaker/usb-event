@@ -170,9 +170,9 @@ class Program
 
             if (mapping is null) return;
 
-            if (isConnect)
+            if (isConnect && mapping.StartOnPlugIn)
                 StartProcess(mapping, running, logger, trayIcon);
-            else
+            else if (!isConnect && mapping.KillOnPlugOut)
                 StopProcess(mapping, running, logger, trayIcon);
         };
 
