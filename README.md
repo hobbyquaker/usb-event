@@ -12,6 +12,14 @@ No-nonsense helper for Windows users with too many USB toys: plug something in, 
 - Dark mode aware, tray-native, YAML-savvy 🌙📜
 - Zero fluff, minimal clicks 🪶🖱️
 
+## Screenshots 📸
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ac71cd29-5571-48e0-8931-7c0c4400f0dc" alt="Tray menu" width="200"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/6f12d477-2ad4-4ca4-bdaa-f6b64492b101" alt="Config editor" width="480"/>
+</p>
+
 ## Download ⬇️
 Get the [latest release](https://github.com/hobbyquaker/usb-event/releases/latest) — two flavors available:
 
