@@ -50,7 +50,6 @@ class Program
         using var logger = new Logger(toConsole: false, logFile: logPath);
         DeviceHistory.Init(dir);
 
-        NativeMethods.FreeConsole();
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
 
@@ -89,6 +88,11 @@ class Program
         using var removeWatcher = CreateWatcher("__InstanceDeletionEvent", holder, running, trayIcon, logger, isConnect: false);
         insertWatcher.Start();
         removeWatcher.Start();
+
+        // Handle Ctrl-C while the console is still attached, then detach it.
+        // Application.Exit() is thread-safe; trayIcon is hidden by its Dispose() when Run() returns.
+        Console.CancelKeyPress += (_, e) => { e.Cancel = true; Application.Exit(); };
+        NativeMethods.FreeConsole();
 
         if (openEditor)
         {
