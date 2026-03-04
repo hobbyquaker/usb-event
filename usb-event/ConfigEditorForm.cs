@@ -181,15 +181,15 @@ sealed class ConfigEditorForm : Form
                     .Build()
                     .Deserialize<AppConfig>(yaml) ?? new AppConfig();
             foreach (var d in cfg.Devices)
-                AddCard(d.DeviceId, d.Executable, d.Arguments ?? string.Empty, d.StartOnStart);
+                AddCard(d.DeviceId, d.Executable, d.Arguments ?? string.Empty, d.StartOnPlugIn, d.KillOnPlugOut, d.StartOnStart);
         }
         catch { }
     }
 
     // ── Card management ───────────────────────────────────────────────────────
 
-    void AddCard(string id = "", string exe = "", string args = "", bool startOnStart = false)
-        => _cardContainer.Controls.Add(BuildCard(id, exe, args, startOnStart));
+    void AddCard(string id = "", string exe = "", string args = "", bool startOnPlugIn = true, bool killOnPlugOut = true, bool startOnStart = false)
+        => _cardContainer.Controls.Add(BuildCard(id, exe, args, startOnPlugIn, killOnPlugOut, startOnStart));
 
     void RelayoutCards()
     {
@@ -204,7 +204,7 @@ sealed class ConfigEditorForm : Form
         _cardContainer.Size = new Size(w, Math.Max(y, 1));
     }
 
-    Control BuildCard(string id, string exe, string args, bool startOnStart = false)
+    Control BuildCard(string id, string exe, string args, bool startOnPlugIn = true, bool killOnPlugOut = true, bool startOnStart = false)
     {
         const int LW = 92, P = 14, Gap = 10;
 
@@ -212,18 +212,22 @@ sealed class ConfigEditorForm : Form
         var txtExe  = MakeInput(exe);
         var txtArgs = MakeInput(args);
 
-        var chkStartOnStart = new CheckBox
+        CheckBox MakeCheck(string text, bool chk) => new()
         {
-            Text      = Loc.T.LabelStartOnStart,
-            Checked   = startOnStart,
+            Text      = text,
+            Checked   = chk,
             AutoSize  = true,
-            Font      = new Font("Segoe UI", 9f),
             ForeColor = TextNorm,
+            Font      = new Font("Segoe UI", 9f),
+            BackColor = CardBg,
             Cursor    = Cursors.Hand,
         };
+        var chkStart        = MakeCheck(Loc.T.LabelStartOnPlugIn, startOnPlugIn);
+        var chkKill         = MakeCheck(Loc.T.LabelKillOnPlugOut, killOnPlugOut);
+        var chkStartOnStart = MakeCheck(Loc.T.LabelStartOnStart,  startOnStart);
 
         int rh    = txtId.PreferredHeight;
-        int cardH = 2 * P + rh * 4 + Gap * 3 + 2;
+        int cardH = P + rh * 3 + Gap * 3 + chkStart.PreferredSize.Height + P + 2;
 
         var card = new Panel { Height = cardH, BackColor = CardBg };
         card.Paint += (_, e) =>
@@ -322,9 +326,10 @@ sealed class ConfigEditorForm : Form
         card.Controls.AddRange(new Control[]
             { removeBtn, MakeLabel(Loc.T.LabelDeviceId), txtId, historyBtn,
                          MakeLabel(Loc.T.LabelProgram),  txtExe, browseBtn,
-                         MakeLabel(Loc.T.LabelArgs),     txtArgs, chkStartOnStart });
+                         MakeLabel(Loc.T.LabelArgs),     txtArgs,
+                         chkStart, chkKill, chkStartOnStart });
 
-        card.Tag = new CardInputs(txtId, txtExe, txtArgs, chkStartOnStart);
+        card.Tag = new CardInputs(txtId, txtExe, txtArgs, chkStart, chkKill, chkStartOnStart);
 
         void Layout()
         {
@@ -351,7 +356,9 @@ sealed class ConfigEditorForm : Form
             txtArgs.Location    = new Point(x, y); txtArgs.Width = txtWidth;
 
             y += rh + Gap;
-            chkStartOnStart.Location = new Point(P, y);
+            chkStart.Location        = new Point(x, y);
+            chkKill.Location         = new Point(x + chkStart.Width + 16, y);
+            chkStartOnStart.Location = new Point(x + chkStart.Width + 16 + chkKill.Width + 16, y);
         }
 
         Layout();
@@ -389,6 +396,10 @@ sealed class ConfigEditorForm : Form
                 sb.AppendLine($"    executable: {Ys(d.Exe.Text.Trim())}");
                 if (!string.IsNullOrWhiteSpace(d.Args.Text))
                     sb.AppendLine($"    arguments: {Ys(d.Args.Text.Trim())}");
+                if (!d.PlugIn.Checked)
+                    sb.AppendLine($"    startOnPlugIn: false");
+                if (!d.PlugOut.Checked)
+                    sb.AppendLine($"    killOnPlugOut: false");
                 if (d.StartOnStart.Checked)
                     sb.AppendLine($"    startOnStart: true");
             }
@@ -465,4 +476,4 @@ sealed class ConfigEditorForm : Form
     }
 }
 
-record CardInputs(TextBox Id, TextBox Exe, TextBox Args, CheckBox StartOnStart);
+record CardInputs(TextBox Id, TextBox Exe, TextBox Args, CheckBox PlugIn, CheckBox PlugOut, CheckBox StartOnStart);

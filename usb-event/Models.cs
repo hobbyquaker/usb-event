@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 class DeviceMapping
 {
-    public string DeviceId    { get; set; } = string.Empty;
-    public string Executable  { get; set; } = string.Empty;
-    public string? Arguments  { get; set; }
-    public bool StartOnStart  { get; set; } = false;
+    public string DeviceId      { get; set; } = string.Empty;
+    public string Executable    { get; set; } = string.Empty;
+    public string? Arguments    { get; set; }
+    public bool StartOnPlugIn   { get; set; } = true;
+    public bool KillOnPlugOut   { get; set; } = true;
+    public bool StartOnStart    { get; set; } = false;
 }
 
 class AppConfig

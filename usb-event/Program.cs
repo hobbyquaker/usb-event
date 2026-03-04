@@ -26,8 +26,9 @@ class Program
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Loc.Init();
 
-        if (args.Contains("--install"))   { InstallAutostart();   return; }
-        if (args.Contains("--uninstall")) { UninstallAutostart(); return; }
+        if (args.Contains("--install"))        { InstallAutostart();       return; }
+        if (args.Contains("--install-silent")) { InstallAutostartSilent(); return; }
+        if (args.Contains("--uninstall"))      { UninstallAutostart();     return; }
 
         var trayMode   = args.Contains("--tray");
         var configPath = Path.Combine(GetConfigDir(), "config.yaml");
@@ -174,9 +175,9 @@ class Program
 
             if (mapping is null) return;
 
-            if (isConnect)
+            if (isConnect && mapping.StartOnPlugIn)
                 StartProcess(mapping, running, logger, trayIcon);
-            else
+            else if (!isConnect && mapping.KillOnPlugOut)
                 StopProcess(mapping, running, logger, trayIcon);
         };
 
@@ -269,20 +270,9 @@ class Program
 
     static void InstallAutostart()
     {
-        var exePath = Environment.ProcessPath
-            ?? throw new InvalidOperationException(Loc.T.CannotResolveProcessPath);
+        var exePath = RegisterAutostart();
+        if (exePath is null) return;
 
-        if (Path.GetFileName(exePath).Equals("dotnet.exe", StringComparison.OrdinalIgnoreCase))
-        {
-            Console.WriteLine(Loc.T.AutostartDotnetWarning);
-            Console.WriteLine(Loc.T.AutostartPublishHint);
-            return;
-        }
-
-        using var key = Registry.CurrentUser.OpenSubKey(RegistryRunKey, writable: true)
-            ?? throw new InvalidOperationException(Loc.T.RegistryNotAccessible);
-
-        key.SetValue(AppDisplayName, $"\"{exePath}\" --tray");
         Console.WriteLine(string.Format(Loc.T.AutostartInstalled, exePath));
         Console.WriteLine(Loc.T.AutostartInfo);
 
@@ -293,6 +283,34 @@ class Program
         {
             Process.Start(new ProcessStartInfo(exePath, "--tray") { UseShellExecute = true });
         }
+    }
+
+    static void InstallAutostartSilent()
+    {
+        var exePath = RegisterAutostart();
+        if (exePath is null) return;
+
+        Process.Start(new ProcessStartInfo(exePath, "--tray") { UseShellExecute = true });
+    }
+
+    // Registers the HKCU Run key entry and returns the exe path, or null if running under dotnet.exe.
+    static string? RegisterAutostart()
+    {
+        var exePath = Environment.ProcessPath
+            ?? throw new InvalidOperationException(Loc.T.CannotResolveProcessPath);
+
+        if (Path.GetFileName(exePath).Equals("dotnet.exe", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine(Loc.T.AutostartDotnetWarning);
+            Console.WriteLine(Loc.T.AutostartPublishHint);
+            return null;
+        }
+
+        using var key = Registry.CurrentUser.OpenSubKey(RegistryRunKey, writable: true)
+            ?? throw new InvalidOperationException(Loc.T.RegistryNotAccessible);
+
+        key.SetValue(AppDisplayName, $"\"{exePath}\" --tray");
+        return exePath;
     }
 
     static void UninstallAutostart()
