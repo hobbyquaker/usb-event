@@ -18,7 +18,7 @@ usb-event/              ← project directory (contains .csproj)
   installer.iss         ← Inno Setup script for building the installer artifact
   usb-event.csproj      ← SDK-style, net10.0-windows, WinForms, NuGets: System.Management + YamlDotNet
 README.md               ← user-facing readme (root level)
-AGENTS.md               ← agent instructions (root level, mirrors this file)
+AGENTS.md               ← agent instructions (root level, mirrors .github/copilot-instructions.md)
 LICENSE                 ← MIT, Sebastian "hobbyquaker" Raff
 usb-event.slnx          ← solution file
 ```
