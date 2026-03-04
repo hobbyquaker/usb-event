@@ -29,6 +29,7 @@ class Program
         if (args.Contains("--install"))        { InstallAutostart();       return; }
         if (args.Contains("--install-silent")) { InstallAutostartSilent(); return; }
         if (args.Contains("--uninstall"))      { UninstallAutostart();     return; }
+        if (args.Contains("--stop"))           { StopRunningInstance();    return; }
 
         var trayMode   = args.Contains("--tray");
         var configPath = Path.Combine(GetConfigDir(), "config.yaml");
@@ -44,6 +45,8 @@ class Program
 
     // ── Tray-Modus ─────────────────────────────────────────────────────────────
 
+    const string ShutdownEventName = "Local\\usb-event-shutdown";
+
     static void RunAsTray(AppConfig config, ConcurrentDictionary<string, Process> running, string configPath, bool openEditor = false)
     {
         var dir     = Path.GetDirectoryName(configPath)!;
@@ -51,6 +54,7 @@ class Program
         using var logger = new Logger(toConsole: false, logFile: logPath);
         DeviceHistory.Init(dir);
 
+        Console.CancelKeyPress += (_, e) => { e.Cancel = true; Application.Exit(); };
         NativeMethods.FreeConsole();
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
@@ -97,6 +101,13 @@ class Program
                 () => holder.Current = LoadConfig(configPath));
             editor.ShowDialog();
         }
+
+        using var shutdownEvent = new EventWaitHandle(false, EventResetMode.ManualReset, ShutdownEventName);
+        new Thread(() =>
+        {
+            try   { shutdownEvent.WaitOne(); Application.Exit(); }
+            catch (ObjectDisposedException) { }
+        }) { IsBackground = true }.Start();
 
         Application.Run();
 
@@ -239,6 +250,15 @@ class Program
     }
 
     // ── Autostart ──────────────────────────────────────────────────────────────
+
+    static void StopRunningInstance()
+    {
+        if (EventWaitHandle.TryOpenExisting(ShutdownEventName, out var ev))
+        {
+            ev.Set();
+            ev.Dispose();
+        }
+    }
 
     static void InstallAutostart()
     {
