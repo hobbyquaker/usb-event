@@ -32,13 +32,14 @@ class Program
         if (args.Contains("--stop"))           { StopRunningInstance();    return; }
 
         var trayMode   = args.Contains("--tray");
-        var configPath = Path.Combine(GetConfigDir(), "config.yaml");
+        var (configDir, isPortable) = GetConfigDir();
+        var configPath  = Path.Combine(configDir, "config.yaml");
         var isNewConfig = EnsureConfigExists(configPath);
-        var config     = LoadConfig(configPath);
-        var running    = new ConcurrentDictionary<string, Process>(StringComparer.OrdinalIgnoreCase);
+        var config      = LoadConfig(configPath);
+        var running     = new ConcurrentDictionary<string, Process>(StringComparer.OrdinalIgnoreCase);
 
         if (trayMode)
-            RunAsTray(config, running, configPath, openEditor: isNewConfig);
+            RunAsTray(config, running, configPath, isPortable, openEditor: isNewConfig);
         else
             RunAsConsole(config, configPath, running);
     }
@@ -47,7 +48,7 @@ class Program
 
     const string ShutdownEventName = "Local\\usb-event-shutdown";
 
-    static void RunAsTray(AppConfig config, ConcurrentDictionary<string, Process> running, string configPath, bool openEditor = false)
+    static void RunAsTray(AppConfig config, ConcurrentDictionary<string, Process> running, string configPath, bool isPortable, bool openEditor = false)
     {
         var dir     = Path.GetDirectoryName(configPath)!;
         var logPath = Path.Combine(dir, "usb-event.log");
@@ -82,6 +83,23 @@ class Program
         menu.Items.Add(Loc.T.MenuOpenFolder, null, (_, _) =>
             Process.Start(new ProcessStartInfo("explorer.exe", dir) { UseShellExecute = true }));
         menu.Items.Add(new ToolStripSeparator());
+        if (!isPortable)
+        {
+            menu.Items.Add(Loc.T.MenuUninstall, null, (_, _) =>
+            {
+                var result = MessageBox.Show(
+                    Loc.T.UninstallConfirmBody,
+                    Loc.T.UninstallConfirmTitle,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    UninstallAutostart();
+                    trayIcon.Visible = false;
+                    Application.Exit();
+                }
+            });
+        }
         menu.Items.Add(Loc.T.MenuExit, null, (_, _) =>
         {
             trayIcon.Visible = false;
@@ -350,18 +368,18 @@ class Program
     // Portable: config.yaml next to the .exe AND the directory is writable (e.g. USB-stick).
     // Installed: falls back to %APPDATA%\usb-event\ (Windows convention).
     //            Program Files is never writable without elevation, so it always falls back.
-    static string GetConfigDir()
+    static (string dir, bool portable) GetConfigDir()
     {
         var baseDir        = AppContext.BaseDirectory;
         var portableConfig = Path.Combine(baseDir, "config.yaml");
         if (File.Exists(portableConfig) && IsDirectoryWritable(baseDir))
-            return baseDir;
+            return (baseDir, true);
 
         var dir = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "usb-event");
         Directory.CreateDirectory(dir);
-        return dir;
+        return (dir, false);
     }
 
     static bool IsDirectoryWritable(string dir)
