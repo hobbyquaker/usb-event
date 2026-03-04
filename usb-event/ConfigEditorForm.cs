@@ -315,7 +315,7 @@ sealed class ConfigEditorForm : Form
             {
                 foreach (var d in recent)
                 {
-                    var label    = d.Name != d.DeviceId ? $"{d.Name}  —  {d.DeviceId}" : d.DeviceId;
+                    var label    = d.Name != d.DeviceId ? $"{d.DeviceId} ({d.Name})" : d.DeviceId;
                     var captured = d.DeviceId;
                     popup.Items.Add(label, null, (_, _) => txtId.Text = captured);
                 }
