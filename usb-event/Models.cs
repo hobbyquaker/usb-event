@@ -9,6 +9,7 @@ class DeviceMapping
     public string? Arguments    { get; set; }
     public bool StartOnPlugIn   { get; set; } = true;
     public bool KillOnPlugOut   { get; set; } = true;
+    public bool StartOnStart    { get; set; } = false;
 }
 
 class AppConfig
