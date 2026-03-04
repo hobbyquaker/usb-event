@@ -15,12 +15,12 @@ No-nonsense helper for Windows users with too many USB toys: plug something in, 
 ## Screenshots 📸
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b3c4cb18-1900-4228-be60-203dbd532206" alt="Tray menu – light mode" width="200"/>
+  <img src="https://github.com/user-attachments/assets/fe11281f-c6a4-4d15-a64c-3ddbb02a9f08" alt="Tray menu – light mode" width="300"/>
   &nbsp;&nbsp;&nbsp;
   <img src="https://github.com/user-attachments/assets/74d7ff7f-0768-4dc7-83e4-bd05063de6a4" alt="Config editor – light mode" width="480"/>
 </p>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a0aefc0a-6d7c-416f-ab5c-1ffaf024c5ad" alt="Tray menu – dark mode" width="200"/>
+  <img src="https://github.com/user-attachments/assets/545539fe-b8a6-49b0-8a69-2c0b6b443de3" alt="Tray menu – dark mode" width="300"/>
   &nbsp;&nbsp;&nbsp;
   <img src="https://github.com/user-attachments/assets/7755027f-4da5-436a-b281-0959eda76643" alt="Config editor – dark mode" width="480"/>
 </p>
