@@ -181,15 +181,15 @@ sealed class ConfigEditorForm : Form
                     .Build()
                     .Deserialize<AppConfig>(yaml) ?? new AppConfig();
             foreach (var d in cfg.Devices)
-                AddCard(d.DeviceId, d.Executable, d.Arguments ?? string.Empty);
+                AddCard(d.DeviceId, d.Executable, d.Arguments ?? string.Empty, d.StartOnStart);
         }
         catch { }
     }
 
     // ── Card management ───────────────────────────────────────────────────────
 
-    void AddCard(string id = "", string exe = "", string args = "")
-        => _cardContainer.Controls.Add(BuildCard(id, exe, args));
+    void AddCard(string id = "", string exe = "", string args = "", bool startOnStart = false)
+        => _cardContainer.Controls.Add(BuildCard(id, exe, args, startOnStart));
 
     void RelayoutCards()
     {
@@ -204,7 +204,7 @@ sealed class ConfigEditorForm : Form
         _cardContainer.Size = new Size(w, Math.Max(y, 1));
     }
 
-    Control BuildCard(string id, string exe, string args)
+    Control BuildCard(string id, string exe, string args, bool startOnStart = false)
     {
         const int LW = 92, P = 14, Gap = 10;
 
@@ -212,8 +212,18 @@ sealed class ConfigEditorForm : Form
         var txtExe  = MakeInput(exe);
         var txtArgs = MakeInput(args);
 
+        var chkStartOnStart = new CheckBox
+        {
+            Text      = Loc.T.LabelStartOnStart,
+            Checked   = startOnStart,
+            AutoSize  = true,
+            Font      = new Font("Segoe UI", 9f),
+            ForeColor = TextNorm,
+            Cursor    = Cursors.Hand,
+        };
+
         int rh    = txtId.PreferredHeight;
-        int cardH = P + rh * 3 + Gap * 2 + P + 2;
+        int cardH = 2 * P + rh * 4 + Gap * 3 + 2;
 
         var card = new Panel { Height = cardH, BackColor = CardBg };
         card.Paint += (_, e) =>
@@ -312,9 +322,9 @@ sealed class ConfigEditorForm : Form
         card.Controls.AddRange(new Control[]
             { removeBtn, MakeLabel(Loc.T.LabelDeviceId), txtId, historyBtn,
                          MakeLabel(Loc.T.LabelProgram),  txtExe, browseBtn,
-                         MakeLabel(Loc.T.LabelArgs),     txtArgs });
+                         MakeLabel(Loc.T.LabelArgs),     txtArgs, chkStartOnStart });
 
-        card.Tag = new CardInputs(txtId, txtExe, txtArgs);
+        card.Tag = new CardInputs(txtId, txtExe, txtArgs, chkStartOnStart);
 
         void Layout()
         {
@@ -339,6 +349,9 @@ sealed class ConfigEditorForm : Form
             y += rh + Gap;
             card.Controls[7].Location = new Point(P, y + 3);   // lblArgs
             txtArgs.Location    = new Point(x, y); txtArgs.Width = txtWidth;
+
+            y += rh + Gap;
+            chkStartOnStart.Location = new Point(P, y);
         }
 
         Layout();
@@ -376,6 +389,8 @@ sealed class ConfigEditorForm : Form
                 sb.AppendLine($"    executable: {Ys(d.Exe.Text.Trim())}");
                 if (!string.IsNullOrWhiteSpace(d.Args.Text))
                     sb.AppendLine($"    arguments: {Ys(d.Args.Text.Trim())}");
+                if (d.StartOnStart.Checked)
+                    sb.AppendLine($"    startOnStart: true");
             }
         }
         return sb.ToString();
@@ -450,4 +465,4 @@ sealed class ConfigEditorForm : Form
     }
 }
 
-record CardInputs(TextBox Id, TextBox Exe, TextBox Args);
+record CardInputs(TextBox Id, TextBox Exe, TextBox Args, CheckBox StartOnStart);

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 class DeviceMapping
 {
-    public string DeviceId   { get; set; } = string.Empty;
-    public string Executable { get; set; } = string.Empty;
-    public string? Arguments { get; set; }
+    public string DeviceId    { get; set; } = string.Empty;
+    public string Executable  { get; set; } = string.Empty;
+    public string? Arguments  { get; set; }
+    public bool StartOnStart  { get; set; } = false;
 }
 
 class AppConfig

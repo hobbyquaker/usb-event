@@ -90,6 +90,8 @@ class Program
         insertWatcher.Start();
         removeWatcher.Start();
 
+        LaunchStartOnStartProcesses(holder.Current, running, logger, trayIcon);
+
         if (openEditor)
         {
             using var editor = new ConfigEditorForm(configPath,
@@ -130,6 +132,8 @@ class Program
         using var removeWatcher = CreateWatcher("__InstanceDeletionEvent", holder, running, null, logger, isConnect: false);
         insertWatcher.Start();
         removeWatcher.Start();
+
+        LaunchStartOnStartProcesses(holder.Current, running, logger, null);
 
         cts.Token.WaitHandle.WaitOne();
 
@@ -235,6 +239,30 @@ class Program
     {
         foreach (var (_, p) in running)
             try { p.Kill(entireProcessTree: true); } catch { }
+    }
+
+    static void LaunchStartOnStartProcesses(AppConfig config, ConcurrentDictionary<string, Process> running, Logger? logger, NotifyIcon? trayIcon)
+    {
+        if (!config.Devices.Any(m => m.StartOnStart)) return;
+
+        try
+        {
+            using var searcher = new ManagementObjectSearcher("SELECT DeviceID,PNPClass FROM Win32_PnPEntity");
+            foreach (ManagementBaseObject device in searcher.Get())
+            {
+                if (!IsUsbDevice(device)) continue;
+                var deviceId = device["DeviceID"]?.ToString() ?? string.Empty;
+                var mapping  = config.Devices.FirstOrDefault(m =>
+                    m.StartOnStart &&
+                    deviceId.StartsWith(m.DeviceId, StringComparison.OrdinalIgnoreCase));
+                if (mapping is not null)
+                    StartProcess(mapping, running, logger, trayIcon);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger?.Write(string.Format(Loc.T.ProcessStartError, ex.Message), ConsoleColor.Yellow);
+        }
     }
 
     // ── Autostart ──────────────────────────────────────────────────────────────
