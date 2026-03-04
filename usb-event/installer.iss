@@ -34,3 +34,20 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Parameters: "--install-silent"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+
+[Code]
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  ResultCode: Integer;
+begin
+  if CurStep = ssInstall then
+  begin
+    if FileExists(ExpandConstant('{app}\{#MyAppExeName}')) then
+    begin
+      Exec(ExpandConstant('{app}\{#MyAppExeName}'), '--stop', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+      Sleep(2000);
+    end;
+    Exec(ExpandConstant('{cmd}'), '/C taskkill /F /IM {#MyAppExeName} 2>nul', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Sleep(500);
+  end;
+end;
