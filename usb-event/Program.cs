@@ -91,6 +91,8 @@ class Program
         insertWatcher.Start();
         removeWatcher.Start();
 
+        CheckAlreadyConnectedDevices(holder, running, logger, trayIcon);
+
         if (openEditor)
         {
             using var editor = new ConfigEditorForm(configPath,
@@ -131,6 +133,8 @@ class Program
         using var removeWatcher = CreateWatcher("__InstanceDeletionEvent", holder, running, null, logger, isConnect: false);
         insertWatcher.Start();
         removeWatcher.Start();
+
+        CheckAlreadyConnectedDevices(holder, running, logger, null);
 
         cts.Token.WaitHandle.WaitOne();
 
@@ -178,6 +182,35 @@ class Program
         };
 
         return watcher;
+    }
+
+    // ── Startup check ──────────────────────────────────────────────────────────
+
+    static void CheckAlreadyConnectedDevices(
+        ConfigHolder holder,
+        ConcurrentDictionary<string, Process> running,
+        Logger? logger,
+        NotifyIcon? trayIcon)
+    {
+        try
+        {
+            using var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity");
+            foreach (ManagementObject device in searcher.Get())
+            {
+                if (!IsUsbDevice(device)) continue;
+
+                var deviceId = device["DeviceID"]?.ToString() ?? string.Empty;
+                var mapping  = FindMapping(holder.Current, deviceId);
+                if (mapping is null || !mapping.StartOnStart) continue;
+
+                DeviceHistory.Record(deviceId, device["Name"]?.ToString() ?? string.Empty);
+                StartProcess(mapping, running, logger, trayIcon);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger?.Write(string.Format(Loc.T.ProcessStartError, ex.Message), ConsoleColor.Yellow);
+        }
     }
 
     // ── Prozessverwaltung ──────────────────────────────────────────────────────
