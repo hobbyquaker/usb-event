@@ -181,15 +181,15 @@ sealed class ConfigEditorForm : Form
                     .Build()
                     .Deserialize<AppConfig>(yaml) ?? new AppConfig();
             foreach (var d in cfg.Devices)
-                AddCard(d.DeviceId, d.Executable, d.Arguments ?? string.Empty);
+                AddCard(d.DeviceId, d.Executable, d.Arguments ?? string.Empty, d.StartOnPlugIn, d.KillOnPlugOut);
         }
         catch { }
     }
 
     // ── Card management ───────────────────────────────────────────────────────
 
-    void AddCard(string id = "", string exe = "", string args = "")
-        => _cardContainer.Controls.Add(BuildCard(id, exe, args));
+    void AddCard(string id = "", string exe = "", string args = "", bool startOnPlugIn = true, bool killOnPlugOut = true)
+        => _cardContainer.Controls.Add(BuildCard(id, exe, args, startOnPlugIn, killOnPlugOut));
 
     void RelayoutCards()
     {
@@ -204,7 +204,7 @@ sealed class ConfigEditorForm : Form
         _cardContainer.Size = new Size(w, Math.Max(y, 1));
     }
 
-    Control BuildCard(string id, string exe, string args)
+    Control BuildCard(string id, string exe, string args, bool startOnPlugIn = true, bool killOnPlugOut = true)
     {
         const int LW = 92, P = 14, Gap = 10;
 
@@ -212,8 +212,21 @@ sealed class ConfigEditorForm : Form
         var txtExe  = MakeInput(exe);
         var txtArgs = MakeInput(args);
 
+        CheckBox MakeCheck(string text, bool chk) => new()
+        {
+            Text      = text,
+            Checked   = chk,
+            AutoSize  = true,
+            ForeColor = TextNorm,
+            Font      = new Font("Segoe UI", 9f),
+            BackColor = CardBg,
+            Cursor    = Cursors.Hand,
+        };
+        var chkStart = MakeCheck(Loc.T.LabelStartOnPlugIn, startOnPlugIn);
+        var chkKill  = MakeCheck(Loc.T.LabelKillOnPlugOut, killOnPlugOut);
+
         int rh    = txtId.PreferredHeight;
-        int cardH = P + rh * 3 + Gap * 2 + P + 2;
+        int cardH = P + rh * 3 + Gap * 3 + chkStart.PreferredSize.Height + P + 2;
 
         var card = new Panel { Height = cardH, BackColor = CardBg };
         card.Paint += (_, e) =>
@@ -312,9 +325,10 @@ sealed class ConfigEditorForm : Form
         card.Controls.AddRange(new Control[]
             { removeBtn, MakeLabel(Loc.T.LabelDeviceId), txtId, historyBtn,
                          MakeLabel(Loc.T.LabelProgram),  txtExe, browseBtn,
-                         MakeLabel(Loc.T.LabelArgs),     txtArgs });
+                         MakeLabel(Loc.T.LabelArgs),     txtArgs,
+                         chkStart, chkKill });
 
-        card.Tag = new CardInputs(txtId, txtExe, txtArgs);
+        card.Tag = new CardInputs(txtId, txtExe, txtArgs, chkStart, chkKill);
 
         void Layout()
         {
@@ -339,6 +353,10 @@ sealed class ConfigEditorForm : Form
             y += rh + Gap;
             card.Controls[7].Location = new Point(P, y + 3);   // lblArgs
             txtArgs.Location    = new Point(x, y); txtArgs.Width = txtWidth;
+
+            y += rh + Gap;
+            chkStart.Location = new Point(x, y);
+            chkKill.Location  = new Point(x + chkStart.Width + 16, y);
         }
 
         Layout();
@@ -376,6 +394,10 @@ sealed class ConfigEditorForm : Form
                 sb.AppendLine($"    executable: {Ys(d.Exe.Text.Trim())}");
                 if (!string.IsNullOrWhiteSpace(d.Args.Text))
                     sb.AppendLine($"    arguments: {Ys(d.Args.Text.Trim())}");
+                if (!d.PlugIn.Checked)
+                    sb.AppendLine($"    startOnPlugIn: false");
+                if (!d.PlugOut.Checked)
+                    sb.AppendLine($"    killOnPlugOut: false");
             }
         }
         return sb.ToString();
@@ -450,4 +472,4 @@ sealed class ConfigEditorForm : Form
     }
 }
 
-record CardInputs(TextBox Id, TextBox Exe, TextBox Args);
+record CardInputs(TextBox Id, TextBox Exe, TextBox Args, CheckBox PlugIn, CheckBox PlugOut);
