@@ -21,12 +21,12 @@ sealed class ConfigEditorForm : Form
     readonly Panel    _cardContainer;
     readonly Panel    _scrollContainer;
 
-    static readonly Color Bg         = Theme.Dark ? Color.FromArgb(32, 32, 32)    : Color.FromArgb(243, 243, 243);
-    static readonly Color CardBg     = Theme.Dark ? Color.FromArgb(45, 45, 45)    : Color.White;
+    static readonly Color Bg         = Theme.Dark ? Color.FromArgb(32, 32, 32)    : Theme.Gray ? Color.FromArgb(212, 212, 212) : Color.FromArgb(243, 243, 243);
+    static readonly Color CardBg     = Theme.Dark ? Color.FromArgb(45, 45, 45)    : Theme.Gray ? Color.FromArgb(224, 224, 224) : Color.White;
     static readonly Color AccentBlue = Color.FromArgb(0, 103, 192);
-    static readonly Color Border     = Theme.Dark ? Color.FromArgb(62, 62, 62)    : Color.FromArgb(218, 218, 218);
-    static readonly Color TextMuted  = Theme.Dark ? Color.FromArgb(155, 155, 155) : Color.FromArgb(86, 86, 86);
-    static readonly Color TextNorm   = Theme.Dark ? Color.FromArgb(240, 240, 240) : Color.FromArgb(30, 30, 30);
+    static readonly Color Border     = Theme.Dark ? Color.FromArgb(62, 62, 62)    : Theme.Gray ? Color.FromArgb(192, 192, 192) : Color.FromArgb(218, 218, 218);
+    static readonly Color TextMuted  = Theme.Dark ? Color.FromArgb(155, 155, 155) : Theme.Gray ? Color.FromArgb(120, 120, 120) : Color.FromArgb(86, 86, 86);
+    static readonly Color TextNorm   = Theme.Dark ? Color.FromArgb(240, 240, 240) : Theme.Gray ? Color.FromArgb(60, 60, 60)   : Color.FromArgb(30, 30, 30);
 
     public ConfigEditorForm(string configPath, Action onSaved)
     {
@@ -227,7 +227,7 @@ sealed class ConfigEditorForm : Form
             Text      = "✕",
             Size      = new Size(24, 24),
             FlatStyle = FlatStyle.Flat,
-            ForeColor = Theme.Dark ? Color.FromArgb(160, 160, 160) : Color.FromArgb(110, 110, 110),
+            ForeColor = Theme.Dark ? Color.FromArgb(160, 160, 160) : Theme.Gray ? Color.FromArgb(130, 130, 130) : Color.FromArgb(110, 110, 110),
             BackColor = Color.Transparent,
             Font      = new Font("Segoe UI", 8.5f),
             Anchor    = AnchorStyles.Top | AnchorStyles.Right,
@@ -256,7 +256,7 @@ sealed class ConfigEditorForm : Form
             Height    = rh,
             Text      = "…",
             FlatStyle = FlatStyle.Flat,
-            BackColor = Theme.Dark ? Color.FromArgb(62, 62, 62) : Color.FromArgb(238, 238, 238),
+            BackColor = Theme.Dark ? Color.FromArgb(62, 62, 62) : Theme.Gray ? Color.FromArgb(200, 200, 200) : Color.FromArgb(238, 238, 238),
             ForeColor = TextNorm,
             Font      = new Font("Segoe UI", 9f),
             Cursor    = Cursors.Hand,
@@ -282,7 +282,7 @@ sealed class ConfigEditorForm : Form
             Height    = rh,
             Text      = "▾",
             FlatStyle = FlatStyle.Flat,
-            BackColor = Theme.Dark ? Color.FromArgb(62, 62, 62) : Color.FromArgb(238, 238, 238),
+            BackColor = Theme.Dark ? Color.FromArgb(62, 62, 62) : Theme.Gray ? Color.FromArgb(200, 200, 200) : Color.FromArgb(238, 238, 238),
             ForeColor = TextNorm,
             Font      = new Font("Segoe UI", 9f),
             Cursor    = Cursors.Hand,
@@ -292,7 +292,8 @@ sealed class ConfigEditorForm : Form
         {
             var recent = DeviceHistory.Load();
             var popup  = new ContextMenuStrip();
-            if (Theme.Dark) popup.Renderer = new DarkMenuRenderer();
+            if (Theme.Dark)      popup.Renderer = new DarkMenuRenderer();
+            else if (Theme.Gray) popup.Renderer = new GrayMenuRenderer();
             if (!recent.Any())
             {
                 popup.Items.Add(new ToolStripMenuItem(Loc.T.NoRecentDevices) { Enabled = false });
@@ -432,14 +433,14 @@ sealed class ConfigEditorForm : Form
             Width     = 94,
             Height    = 32,
             FlatStyle = FlatStyle.Flat,
-            BackColor = Theme.Dark ? Color.FromArgb(62, 62, 62) : Color.FromArgb(238, 238, 238),
+            BackColor = Theme.Dark ? Color.FromArgb(62, 62, 62) : Theme.Gray ? Color.FromArgb(200, 200, 200) : Color.FromArgb(238, 238, 238),
             ForeColor = TextNorm,
             Font      = new Font("Segoe UI", 9.5f),
             Cursor    = Cursors.Hand,
         };
         b.FlatAppearance.BorderColor        = Border;
-        b.FlatAppearance.MouseOverBackColor = Theme.Dark ? Color.FromArgb(76, 76, 76) : Color.FromArgb(225, 225, 225);
-        b.FlatAppearance.MouseDownBackColor = Theme.Dark ? Color.FromArgb(50, 50, 50) : Color.FromArgb(210, 210, 210);
+        b.FlatAppearance.MouseOverBackColor = Theme.Dark ? Color.FromArgb(76, 76, 76) : Theme.Gray ? Color.FromArgb(188, 188, 188) : Color.FromArgb(225, 225, 225);
+        b.FlatAppearance.MouseDownBackColor = Theme.Dark ? Color.FromArgb(50, 50, 50) : Theme.Gray ? Color.FromArgb(175, 175, 175) : Color.FromArgb(210, 210, 210);
         return b;
     }
 

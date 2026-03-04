@@ -82,7 +82,8 @@ class Program
             trayIcon.Visible = false;
             Application.Exit();
         });
-        if (Theme.Dark) menu.Renderer = new DarkMenuRenderer();
+        if (Theme.Dark)      menu.Renderer = new DarkMenuRenderer();
+        else if (Theme.Gray) menu.Renderer = new GrayMenuRenderer();
         trayIcon.ContextMenuStrip = menu;
 
         using var insertWatcher = CreateWatcher("__InstanceCreationEvent", holder, running, trayIcon, logger, isConnect: true);
