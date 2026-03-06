@@ -32,14 +32,14 @@ class Program
         if (args.Contains("--stop"))           { StopRunningInstance();    return; }
 
         var trayMode   = args.Contains("--tray");
-        var (configDir, isPortable) = GetConfigDir();
+        var (configDir, _) = GetConfigDir();
         var configPath  = Path.Combine(configDir, "config.yaml");
         var isNewConfig = EnsureConfigExists(configPath);
         var config      = LoadConfig(configPath);
         var running     = new ConcurrentDictionary<string, Process>(StringComparer.OrdinalIgnoreCase);
 
         if (trayMode)
-            RunAsTray(config, running, configPath, isPortable, openEditor: isNewConfig);
+            RunAsTray(config, running, configPath, openEditor: isNewConfig);
         else
             RunAsConsole(config, configPath, running);
     }
@@ -48,7 +48,7 @@ class Program
 
     const string ShutdownEventName = "Local\\usb-event-shutdown";
 
-    static void RunAsTray(AppConfig config, ConcurrentDictionary<string, Process> running, string configPath, bool isPortable, bool openEditor = false)
+    static void RunAsTray(AppConfig config, ConcurrentDictionary<string, Process> running, string configPath, bool openEditor = false)
     {
         var dir     = Path.GetDirectoryName(configPath)!;
         var logPath = Path.Combine(dir, "usb-event.log");
@@ -83,23 +83,35 @@ class Program
         menu.Items.Add(Loc.T.MenuOpenFolder, null, (_, _) =>
             Process.Start(new ProcessStartInfo("explorer.exe", dir) { UseShellExecute = true }));
         menu.Items.Add(new ToolStripSeparator());
-        if (!isPortable)
+
+        bool registered = IsAutostartRegistered();
+        var installItem   = new ToolStripMenuItem(Loc.T.MenuInstall)   { Enabled = !registered };
+        var uninstallItem = new ToolStripMenuItem(Loc.T.MenuUninstall) { Enabled = registered  };
+        installItem.Click += (_, _) =>
         {
-            menu.Items.Add(Loc.T.MenuUninstall, null, (_, _) =>
+            if (RegisterAutostart() is not null)
             {
-                var result = MessageBox.Show(
-                    Loc.T.UninstallConfirmBody,
-                    Loc.T.UninstallConfirmTitle,
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    UninstallAutostart();
-                    trayIcon.Visible = false;
-                    Application.Exit();
-                }
-            });
-        }
+                installItem.Enabled   = false;
+                uninstallItem.Enabled = true;
+            }
+        };
+        uninstallItem.Click += (_, _) =>
+        {
+            var result = MessageBox.Show(
+                Loc.T.UninstallConfirmBody,
+                Loc.T.UninstallConfirmTitle,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                UninstallAutostart();
+                trayIcon.Visible = false;
+                Application.Exit();
+            }
+        };
+        menu.Items.Add(installItem);
+        menu.Items.Add(uninstallItem);
+
         menu.Items.Add(Loc.T.MenuExit, null, (_, _) =>
         {
             trayIcon.Visible = false;
@@ -301,6 +313,12 @@ class Program
     }
 
     // ── Autostart ──────────────────────────────────────────────────────────────
+
+    static bool IsAutostartRegistered()
+    {
+        using var key = Registry.CurrentUser.OpenSubKey(RegistryRunKey);
+        return key?.GetValue(AppDisplayName) is not null;
+    }
 
     static void StopRunningInstance()
     {
