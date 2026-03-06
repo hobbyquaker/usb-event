@@ -31,14 +31,16 @@ class Program
         if (args.Contains("--uninstall"))      { UninstallAutostart();     return; }
         if (args.Contains("--stop"))           { StopRunningInstance();    return; }
 
-        var trayMode   = args.Contains("--tray");
+        var consoleMode = args.Contains("--console");
+        if (args.Contains("--tray"))
+            Console.Error.WriteLine("⚠ --tray is deprecated; tray mode is now the default. Use --console to run in console mode.");
         var (configDir, isPortable) = GetConfigDir();
         var configPath  = Path.Combine(configDir, "config.yaml");
         var isNewConfig = EnsureConfigExists(configPath);
         var config      = LoadConfig(configPath);
         var running     = new ConcurrentDictionary<string, Process>(StringComparer.OrdinalIgnoreCase);
 
-        if (trayMode)
+        if (!consoleMode)
             RunAsTray(config, running, configPath, isPortable, openEditor: isNewConfig);
         else
             RunAsConsole(config, configPath, running);
@@ -200,7 +202,10 @@ class Program
             logger?.Write(FormatDeviceInfo(device), color);
 
             if (isConnect)
+            {
+                DeviceHistory.MarkPostStart(deviceId);
                 DeviceHistory.Record(deviceId, device["Name"]?.ToString() ?? string.Empty);
+            }
 
             if (mapping is null) return;
 
@@ -324,7 +329,7 @@ class Program
         if (answer.Length == 0 || (!answer.StartsWith("n", StringComparison.OrdinalIgnoreCase)
                                 && !answer.StartsWith("н", StringComparison.OrdinalIgnoreCase)))
         {
-            Process.Start(new ProcessStartInfo(exePath, "--tray") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(exePath) { UseShellExecute = true });
         }
     }
 
@@ -333,7 +338,7 @@ class Program
         var exePath = RegisterAutostart();
         if (exePath is null) return;
 
-        Process.Start(new ProcessStartInfo(exePath, "--tray") { UseShellExecute = true });
+        Process.Start(new ProcessStartInfo(exePath) { UseShellExecute = true });
     }
 
     // Registers the HKCU Run key entry and returns the exe path, or null if running under dotnet.exe.
@@ -352,7 +357,7 @@ class Program
         using var key = Registry.CurrentUser.OpenSubKey(RegistryRunKey, writable: true)
             ?? throw new InvalidOperationException(Loc.T.RegistryNotAccessible);
 
-        key.SetValue(AppDisplayName, $"\"{exePath}\" --tray");
+        key.SetValue(AppDisplayName, $"\"{exePath}\"");
         return exePath;
     }
 
@@ -425,6 +430,25 @@ class Program
     static DeviceMapping? FindMapping(AppConfig config, string deviceId) =>
         config.Devices.FirstOrDefault(m =>
             deviceId.StartsWith(m.DeviceId, StringComparison.OrdinalIgnoreCase));
+
+    internal static IReadOnlyList<(string DeviceId, string Name)> GetCurrentUsbDevices()
+    {
+        try
+        {
+            using var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity");
+            var devices = new List<(string DeviceId, string Name)>();
+            foreach (ManagementObject device in searcher.Get())
+            {
+                if (!IsUsbDevice(device)) continue;
+                var id   = device["DeviceID"]?.ToString() ?? string.Empty;
+                var name = device["Name"]?.ToString()     ?? string.Empty;
+                if (!string.IsNullOrEmpty(id))
+                    devices.Add((id, name));
+            }
+            return devices;
+        }
+        catch { return []; }
+    }
 
     static bool IsUsbDevice(ManagementBaseObject device)
     {

@@ -97,7 +97,7 @@ static class Loc
         };
     }
 
-    static LocStrings En => new()
+    static LocStrings En => new()En
     {
         AppName = "USB Event",
         MenuEditConfig = "Edit configuration…",
@@ -127,7 +127,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Autostart can only be installed with the published .exe.",
         AutostartPublishHint = "  Please run 'dotnet publish' first.",
         RegistryNotAccessible = "Registry key not accessible.",
-        AutostartInstalled = "✔ Autostart registered: {0} --tray",
+        AutostartInstalled = "✔ Autostart registered: {0}",
         AutostartInfo = "  The app will start in the tray at next login.",
         AutostartRemoved = "✔ Autostart entry removed.",
         AutostartStartNow = "Start in background now? [Y/n] ",
@@ -148,15 +148,15 @@ static class Loc
         DeleteConfirmBody = "Delete this device mapping?",
         ErrorTitle = "Error",
         SaveError = "Error while saving:\n{0}",
-        NoRecentDevices = "No recent devices",
-        QuickSelectHint = "Plug and unplug a device to populate the quick-select list (▾)",
+        NoRecentDevices = "No USB devices connected",
+        QuickSelectHint = "▾ shows all currently connected USB devices",
 
         MenuUninstall         = "Remove autostart…",
         UninstallConfirmTitle = "Remove autostart",
         UninstallConfirmBody  = "Remove the autostart entry and exit?",
     };
 
-    static LocStrings De => new()
+    static LocStrings De => new()De
     {
         AppName = "USB Event",
         MenuEditConfig = "Konfiguration bearbeiten…",
@@ -186,7 +186,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Autostart kann nur mit der veröffentlichten .exe eingerichtet werden.",
         AutostartPublishHint = "  Führen Sie zuerst 'dotnet publish' aus.",
         RegistryNotAccessible = "Registrierungsschlüssel nicht zugänglich.",
-        AutostartInstalled = "✔ Autostart eingerichtet: {0} --tray",
+        AutostartInstalled = "✔ Autostart eingerichtet: {0}",
         AutostartInfo = "  Die Anwendung startet beim nächsten Login automatisch im Hintergrund.",
         AutostartRemoved = "✔ Autostart-Eintrag entfernt.",
         AutostartStartNow = "Jetzt im Hintergrund starten? [J/n] ",
@@ -207,15 +207,15 @@ static class Loc
         DeleteConfirmBody = "Diese Gerätezuordnung wirklich löschen?",
         ErrorTitle = "Fehler",
         SaveError = "Fehler beim Speichern:\n{0}",
-        NoRecentDevices = "Kein Geräteverlauf",
-        QuickSelectHint = "Gerät ein- und ausstecken, um die Schnellauswahl (▾) zu befüllen",
+        NoRecentDevices = "Keine USB-Geräte verbunden",
+        QuickSelectHint = "▾ zeigt alle aktuell verbundenen USB-Geräte",
 
         MenuUninstall         = "Autostart entfernen…",
         UninstallConfirmTitle = "Autostart entfernen",
         UninstallConfirmBody  = "Autostart-Eintrag entfernen und beenden?",
     };
 
-    static LocStrings Fr => new()
+    static LocStrings Fr => new()Fr
     {
         AppName = "USB Event",
         MenuEditConfig = "Modifier la configuration…",
@@ -245,7 +245,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ L'autostart ne peut être installé qu'avec l'exécutable publié.",
         AutostartPublishHint = "  Exécutez d'abord 'dotnet publish'.",
         RegistryNotAccessible = "Clé de registre inaccessible.",
-        AutostartInstalled = "✔ Autostart enregistré : {0} --tray",
+        AutostartInstalled = "✔ Autostart enregistré : {0}",
         AutostartInfo = "  L'application démarrera dans le tray à la prochaine ouverture de session.",
         AutostartRemoved = "✔ Entrée d'autostart supprimée.",
         AutostartStartNow = "Démarrer en arrière-plan maintenant ? [O/n] ",
@@ -266,15 +266,15 @@ static class Loc
         DeleteConfirmBody = "Supprimer ce mappage d'appareil ?",
         ErrorTitle = "Erreur",
         SaveError = "Erreur lors de l'enregistrement:\n{0}",
-        NoRecentDevices = "Aucun appareil récent",
-        QuickSelectHint = "Branchez et débranchez un appareil pour alimenter la liste rapide (▾)",
+        NoRecentDevices = "Aucun périphérique USB connecté",
+        QuickSelectHint = "▾ affiche tous les périphériques USB actuellement connectés",
 
         MenuUninstall         = "Supprimer l'autostart…",
         UninstallConfirmTitle = "Supprimer l'autostart",
         UninstallConfirmBody  = "Supprimer l'entrée d'autostart et quitter ?",
     };
 
-    static LocStrings Es => new()
+    static LocStrings Es => new()Es
     {
         AppName = "USB Event",
         MenuEditConfig = "Editar configuración…",
@@ -304,7 +304,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ El inicio automático solo funciona con el .exe publicado.",
         AutostartPublishHint = "  Ejecute primero 'dotnet publish'.",
         RegistryNotAccessible = "Clave de registro no accesible.",
-        AutostartInstalled = "✔ Inicio automático registrado: {0} --tray",
+        AutostartInstalled = "✔ Inicio automático registrado: {0}",
         AutostartInfo = "  La app se iniciará en el tray en el próximo inicio de sesión.",
         AutostartRemoved = "✔ Entrada de inicio automático eliminada.",
         AutostartStartNow = "¿Iniciar en segundo plano ahora? [S/n] ",
@@ -325,15 +325,15 @@ static class Loc
         DeleteConfirmBody = "¿Eliminar esta asignación de dispositivo?",
         ErrorTitle = "Error",
         SaveError = "Error al guardar:\n{0}",
-        NoRecentDevices = "Sin dispositivos recientes",
-        QuickSelectHint = "Conecta y desconecta un dispositivo para llenar la selección rápida (▾)",
+        NoRecentDevices = "No hay dispositivos USB conectados",
+        QuickSelectHint = "▾ muestra todos los dispositivos USB conectados actualmente",
 
         MenuUninstall         = "Eliminar inicio automático…",
         UninstallConfirmTitle = "Eliminar inicio automático",
         UninstallConfirmBody  = "¿Eliminar la entrada de inicio automático y salir?",
     };
 
-    static LocStrings Ru => new()
+    static LocStrings Ru => new()Ru
     {
         AppName = "USB Event",
         MenuEditConfig = "Изменить конфигурацию…",
@@ -363,7 +363,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Автозапуск возможен только с опубликованным .exe.",
         AutostartPublishHint = "  Сначала выполните 'dotnet publish'.",
         RegistryNotAccessible = "Ключ реестра недоступен.",
-        AutostartInstalled = "✔ Автозапуск зарегистрирован: {0} --tray",
+        AutostartInstalled = "✔ Автозапуск зарегистрирован: {0}",
         AutostartInfo = "  Приложение запустится в трее при следующем входе.",
         AutostartRemoved = "✔ Запись автозапуска удалена.",
         AutostartStartNow = "Запустить в фоне сейчас? [Д/н] ",
@@ -384,15 +384,15 @@ static class Loc
         DeleteConfirmBody = "Удалить эту привязку устройства?",
         ErrorTitle = "Ошибка",
         SaveError = "Ошибка сохранения:\n{0}",
-        NoRecentDevices = "Нет недавних устройств",
-        QuickSelectHint = "Подключите и отключите устройство, чтобы заполнить быстрый список (▾)",
+        NoRecentDevices = "USB-устройства не подключены",
+        QuickSelectHint = "▾ показывает все подключённые USB-устройства",
 
         MenuUninstall         = "Удалить автозапуск…",
         UninstallConfirmTitle = "Удалить автозапуск",
         UninstallConfirmBody  = "Удалить запись автозапуска и завершить работу?",
     };
 
-    static LocStrings Ja => new()
+    static LocStrings Ja => new()Ja
     {
         AppName = "USB Event",
         MenuEditConfig = "設定を編集…",
@@ -422,7 +422,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ 自動起動は公開済みの .exe でのみ設定できます。",
         AutostartPublishHint = "  先に 'dotnet publish' を実行してください。",
         RegistryNotAccessible = "レジストリキーにアクセスできません。",
-        AutostartInstalled = "✔ 自動起動を登録: {0} --tray",
+        AutostartInstalled = "✔ 自動起動を登録: {0}",
         AutostartInfo = "  次回ログイン時にトレイで自動起動します。",
         AutostartRemoved = "✔ 自動起動エントリを削除しました。",
         AutostartStartNow = "今すぐバックグラウンドで起動しますか？ [Y/n] ",
@@ -443,15 +443,15 @@ static class Loc
         DeleteConfirmBody = "このデバイスの割り当てを削除しますか？",
         ErrorTitle = "エラー",
         SaveError = "保存中にエラーが発生しました:\n{0}",
-        NoRecentDevices = "履歴なし",
-        QuickSelectHint = "デバイスを接続・切断してクイック選択 (▾) を使えるようにする",
+        NoRecentDevices = "USB デバイスが接続されていません",
+        QuickSelectHint = "▾ は現在接続中の全 USB デバイスを表示",
 
         MenuUninstall         = "自動起動を削除…",
         UninstallConfirmTitle = "自動起動を削除",
         UninstallConfirmBody  = "自動起動エントリを削除して終了しますか？",
     };
 
-    static LocStrings Zh => new()
+    static LocStrings Zh => new()Zh
     {
         AppName = "USB Event",
         MenuEditConfig = "编辑配置…",
@@ -481,7 +481,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ 仅发布后的 .exe 才能设置自启动。",
         AutostartPublishHint = "  请先执行 'dotnet publish'。",
         RegistryNotAccessible = "无法访问注册表键。",
-        AutostartInstalled = "✔ 已注册自启动: {0} --tray",
+        AutostartInstalled = "✔ 已注册自启动: {0}",
         AutostartInfo = "  应用将在下次登录时在托盘中启动。",
         AutostartRemoved = "✔ 已移除自启动项。",
         AutostartStartNow = "现在在后台启动？[Y/n] ",
@@ -502,15 +502,15 @@ static class Loc
         DeleteConfirmBody = "确定删除此设备映射吗？",
         ErrorTitle = "错误",
         SaveError = "保存时出错:\n{0}",
-        NoRecentDevices = "无最近设备",
-        QuickSelectHint = "插拔设备以填充快速选择列表 (▾)",
+        NoRecentDevices = "没有连接 USB 设备",
+        QuickSelectHint = "▾ 显示所有当前连接的 USB 设备",
 
         MenuUninstall         = "移除自启动…",
         UninstallConfirmTitle = "移除自启动",
         UninstallConfirmBody  = "移除自启动项并退出？",
     };
 
-    static LocStrings Ar => new()
+    static LocStrings Ar => new()Ar
     {
         AppName = "USB Event",
         MenuEditConfig = "تعديل الإعدادات…",
@@ -540,7 +540,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ يمكن تثبيت التشغيل التلقائي فقط مع الـ .exe المنشور.",
         AutostartPublishHint = "  يرجى تشغيل 'dotnet publish' أولاً.",
         RegistryNotAccessible = "مفتاح السجل غير متاح.",
-        AutostartInstalled = "✔ تم تسجيل التشغيل التلقائي: {0} --tray",
+        AutostartInstalled = "✔ تم تسجيل التشغيل التلقائي: {0}",
         AutostartInfo = "  سيبدأ التطبيق في شريط المهام عند تسجيل الدخول التالي.",
         AutostartRemoved = "✔ تمت إزالة إدخال التشغيل التلقائي.",
         AutostartStartNow = "البدء في الخلفية الآن؟ [Y/n] ",
@@ -561,15 +561,15 @@ static class Loc
         DeleteConfirmBody = "حذف تعيين هذا الجهاز؟",
         ErrorTitle = "خطأ",
         SaveError = "خطأ أثناء الحفظ:\n{0}",
-        NoRecentDevices = "لا توجد أجهزة حديثة",
-        QuickSelectHint = "وصّل الجهاز وافصله لملء قائمة الاختيار السريع (▾)",
+        NoRecentDevices = "لا توجد أجهزة USB متصلة",
+        QuickSelectHint = "▾ يعرض جميع أجهزة USB المتصلة حاليًا",
 
         MenuUninstall         = "إزالة التشغيل التلقائي…",
         UninstallConfirmTitle = "إزالة التشغيل التلقائي",
         UninstallConfirmBody  = "هل تريد إزالة إدخال التشغيل التلقائي والخروج؟",
     };
 
-    static LocStrings Id => new()
+    static LocStrings Id => new()Id
     {
         AppName = "USB Event",
         MenuEditConfig = "Edit konfigurasi…",
@@ -599,7 +599,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Mulai otomatis hanya dapat dipasang dengan .exe yang dipublikasikan.",
         AutostartPublishHint = "  Jalankan 'dotnet publish' terlebih dahulu.",
         RegistryNotAccessible = "Kunci registri tidak dapat diakses.",
-        AutostartInstalled = "✔ Mulai otomatis terdaftar: {0} --tray",
+        AutostartInstalled = "✔ Mulai otomatis terdaftar: {0}",
         AutostartInfo = "  Aplikasi akan mulai di tray saat login berikutnya.",
         AutostartRemoved = "✔ Entri mulai otomatis dihapus.",
         AutostartStartNow = "Mulai di latar belakang sekarang? [Y/n] ",
@@ -620,15 +620,15 @@ static class Loc
         DeleteConfirmBody = "Hapus pemetaan perangkat ini?",
         ErrorTitle = "Kesalahan",
         SaveError = "Kesalahan saat menyimpan:\n{0}",
-        NoRecentDevices = "Tidak ada perangkat terbaru",
-        QuickSelectHint = "Hubungkan dan cabut perangkat untuk mengisi daftar pilihan cepat (▾)",
+        NoRecentDevices = "Tidak ada perangkat USB yang terhubung",
+        QuickSelectHint = "▾ menampilkan semua perangkat USB yang saat ini terhubung",
 
         MenuUninstall         = "Hapus mulai otomatis…",
         UninstallConfirmTitle = "Hapus mulai otomatis",
         UninstallConfirmBody  = "Hapus entri mulai otomatis dan keluar?",
     };
 
-    static LocStrings Ko => new()
+    static LocStrings Ko => new()Ko
     {
         AppName = "USB Event",
         MenuEditConfig = "설정 편집…",
@@ -658,7 +658,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ 자동 시작은 게시된 .exe 파일에서만 설치할 수 있습니다.",
         AutostartPublishHint = "  먼저 'dotnet publish'를 실행하세요.",
         RegistryNotAccessible = "레지스트리 키에 접근할 수 없습니다.",
-        AutostartInstalled = "✔ 자동 시작 등록됨: {0} --tray",
+        AutostartInstalled = "✔ 자동 시작 등록됨: {0}",
         AutostartInfo = "  다음 로그인 시 앱이 트레이에서 자동으로 시작됩니다.",
         AutostartRemoved = "✔ 자동 시작 항목이 제거되었습니다.",
         AutostartStartNow = "지금 백그라운드에서 시작하시겠습니까? [Y/n] ",
@@ -679,15 +679,15 @@ static class Loc
         DeleteConfirmBody = "이 장치 매핑을 삭제하시겠습니까?",
         ErrorTitle = "오류",
         SaveError = "저장 중 오류 발생:\n{0}",
-        NoRecentDevices = "최근 장치 없음",
-        QuickSelectHint = "장치를 연결하고 분리하여 빠른 선택 목록 (▾)을 채우세요",
+        NoRecentDevices = "연결된 USB 장치 없음",
+        QuickSelectHint = "▾ 는 현재 연결된 모든 USB 장치를 표시합니다",
 
         MenuUninstall         = "자동 시작 제거…",
         UninstallConfirmTitle = "자동 시작 제거",
         UninstallConfirmBody  = "자동 시작 항목을 제거하고 종료하시겠습니까?",
     };
 
-    static LocStrings Pt => new()
+    static LocStrings Pt => new()Pt
     {
         AppName = "USB Event",
         MenuEditConfig = "Editar configuração…",
@@ -717,7 +717,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ A inicialização automática só pode ser instalada com o .exe publicado.",
         AutostartPublishHint = "  Execute 'dotnet publish' primeiro.",
         RegistryNotAccessible = "Chave de registro não acessível.",
-        AutostartInstalled = "✔ Inicialização automática registrada: {0} --tray",
+        AutostartInstalled = "✔ Inicialização automática registrada: {0}",
         AutostartInfo = "  O aplicativo iniciará na bandeja no próximo login.",
         AutostartRemoved = "✔ Entrada de inicialização automática removida.",
         AutostartStartNow = "Iniciar em segundo plano agora? [Y/n] ",
@@ -738,15 +738,15 @@ static class Loc
         DeleteConfirmBody = "Excluir este mapeamento de dispositivo?",
         ErrorTitle = "Erro",
         SaveError = "Erro ao salvar:\n{0}",
-        NoRecentDevices = "Sem dispositivos recentes",
-        QuickSelectHint = "Conecte e desconecte um dispositivo para preencher a lista de seleção rápida (▾)",
+        NoRecentDevices = "Nenhum dispositivo USB conectado",
+        QuickSelectHint = "▾ exibe todos os dispositivos USB conectados no momento",
 
         MenuUninstall         = "Remover inicialização automática…",
         UninstallConfirmTitle = "Remover inicialização automática",
         UninstallConfirmBody  = "Remover a entrada de inicialização automática e sair?",
     };
 
-    static LocStrings Hi => new()
+    static LocStrings Hi => new()Hi
     {
         AppName = "USB Event",
         MenuEditConfig = "कॉन्फ़िगरेशन संपादित करें…",
@@ -776,7 +776,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ ऑटोस्टार्ट केवल प्रकाशित .exe के साथ इंस्टॉल किया जा सकता है।",
         AutostartPublishHint = "  पहले 'dotnet publish' चलाएँ।",
         RegistryNotAccessible = "रजिस्ट्री कुंजी सुलभ नहीं है।",
-        AutostartInstalled = "✔ ऑटोस्टार्ट पंजीकृत: {0} --tray",
+        AutostartInstalled = "✔ ऑटोस्टार्ट पंजीकृत: {0}",
         AutostartInfo = "  अगले लॉगिन पर ऐप ट्रे में शुरू होगा।",
         AutostartRemoved = "✔ ऑटोस्टार्ट प्रविष्टि हटाई गई।",
         AutostartStartNow = "अभी पृष्ठभूमि में प्रारंभ करें? [Y/n] ",
@@ -797,15 +797,15 @@ static class Loc
         DeleteConfirmBody = "इस डिवाइस मैपिंग को हटाएँ?",
         ErrorTitle = "त्रुटि",
         SaveError = "सहेजते समय त्रुटि:\n{0}",
-        NoRecentDevices = "कोई हाल के डिवाइस नहीं",
-        QuickSelectHint = "त्वरित चयन सूची (▾) भरने के लिए डिवाइस कनेक्ट और डिसकनेक्ट करें",
+        NoRecentDevices = "कोई USB डिवाइस कनेक्टेड नहीं",
+        QuickSelectHint = "▾ सभी वर्तमान में कनेक्टेड USB डिवाइस दिखाता है",
 
         MenuUninstall         = "ऑटोस्टार्ट हटाएँ…",
         UninstallConfirmTitle = "ऑटोस्टार्ट हटाएँ",
         UninstallConfirmBody  = "ऑटोस्टार्ट प्रविष्टि हटाएँ और बाहर निकलें?",
     };
 
-    static LocStrings Sv => new()
+    static LocStrings Sv => new()Sv
     {
         AppName = "USB Event",
         MenuEditConfig = "Redigera konfiguration…",
@@ -835,7 +835,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Autostart kan bara installeras med den publicerade .exe-filen.",
         AutostartPublishHint = "  Kör 'dotnet publish' först.",
         RegistryNotAccessible = "Registernyckeln är inte åtkomlig.",
-        AutostartInstalled = "✔ Autostart registrerad: {0} --tray",
+        AutostartInstalled = "✔ Autostart registrerad: {0}",
         AutostartInfo = "  Appen startar i fältet vid nästa inloggning.",
         AutostartRemoved = "✔ Autostart-post borttagen.",
         AutostartStartNow = "Starta i bakgrunden nu? [J/n] ",
@@ -856,15 +856,15 @@ static class Loc
         DeleteConfirmBody = "Ta bort den här enhetsmappningen?",
         ErrorTitle = "Fel",
         SaveError = "Fel vid sparning:\n{0}",
-        NoRecentDevices = "Inga senaste enheter",
-        QuickSelectHint = "Anslut och koppla ur en enhet för att fylla snabbvalslistan (▾)",
+        NoRecentDevices = "Inga USB-enheter anslutna",
+        QuickSelectHint = "▾ visar alla för tillfället anslutna USB-enheter",
 
         MenuUninstall         = "Ta bort autostart…",
         UninstallConfirmTitle = "Ta bort autostart",
         UninstallConfirmBody  = "Ta bort autostart-post och avsluta?",
     };
 
-    static LocStrings No => new()
+    static LocStrings No => new()No
     {
         AppName = "USB Event",
         MenuEditConfig = "Rediger konfigurasjon…",
@@ -894,7 +894,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Autostart kan bare installeres med den publiserte .exe-filen.",
         AutostartPublishHint = "  Kjør 'dotnet publish' først.",
         RegistryNotAccessible = "Registernøkkel ikke tilgjengelig.",
-        AutostartInstalled = "✔ Autostart registrert: {0} --tray",
+        AutostartInstalled = "✔ Autostart registrert: {0}",
         AutostartInfo = "  Appen starter i systemfeltet ved neste innlogging.",
         AutostartRemoved = "✔ Autostart-oppføring fjernet.",
         AutostartStartNow = "Starte i bakgrunnen nå? [J/n] ",
@@ -915,15 +915,15 @@ static class Loc
         DeleteConfirmBody = "Slette denne enhetstilordningen?",
         ErrorTitle = "Feil",
         SaveError = "Feil ved lagring:\n{0}",
-        NoRecentDevices = "Ingen nylige enheter",
-        QuickSelectHint = "Koble til og fra en enhet for å fylle hurtigvalglisten (▾)",
+        NoRecentDevices = "Ingen USB-enheter tilkoblet",
+        QuickSelectHint = "▾ viser alle USB-enheter som er tilkoblet for øyeblikket",
 
         MenuUninstall         = "Fjern autostart…",
         UninstallConfirmTitle = "Fjern autostart",
         UninstallConfirmBody  = "Fjerne autostart-oppføringen og avslutte?",
     };
 
-    static LocStrings Fi => new()
+    static LocStrings Fi => new()Fi
     {
         AppName = "USB Event",
         MenuEditConfig = "Muokkaa asetuksia…",
@@ -953,7 +953,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Automaattinen käynnistys voidaan asentaa vain julkaistun .exe-tiedoston kanssa.",
         AutostartPublishHint = "  Suorita ensin 'dotnet publish'.",
         RegistryNotAccessible = "Rekisteriavain ei ole saavutettavissa.",
-        AutostartInstalled = "✔ Automaattinen käynnistys rekisteröity: {0} --tray",
+        AutostartInstalled = "✔ Automaattinen käynnistys rekisteröity: {0}",
         AutostartInfo = "  Sovellus käynnistyy ilmaisinalueella seuraavalla kirjautumiskerralla.",
         AutostartRemoved = "✔ Automaattinen käynnistys -merkintä poistettu.",
         AutostartStartNow = "Käynnistetäänkö taustalla nyt? [K/n] ",
@@ -974,15 +974,15 @@ static class Loc
         DeleteConfirmBody = "Poistetaanko tämä laiteyhdistys?",
         ErrorTitle = "Virhe",
         SaveError = "Virhe tallennuksessa:\n{0}",
-        NoRecentDevices = "Ei viimeaikaisia laitteita",
-        QuickSelectHint = "Yhdistä ja irrota laite täyttääksesi pikavalintaluettelon (▾)",
+        NoRecentDevices = "Ei USB-laitteita yhdistettynä",
+        QuickSelectHint = "▾ näyttää kaikki tällä hetkellä yhdistetyt USB-laitteet",
 
         MenuUninstall         = "Poista automaattinen käynnistys…",
         UninstallConfirmTitle = "Poista automaattinen käynnistys",
         UninstallConfirmBody  = "Poistetaanko automaattinen käynnistys -merkintä ja suljetaanko ohjelma?",
     };
 
-    static LocStrings Et => new()
+    static LocStrings Et => new()Et
     {
         AppName = "USB Event",
         MenuEditConfig = "Muuda konfiguratsiooni…",
@@ -1012,7 +1012,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Automaatkäivitust saab installida ainult avaldatud .exe-ga.",
         AutostartPublishHint = "  Käivita esmalt 'dotnet publish'.",
         RegistryNotAccessible = "Registrivõti pole ligipääsetav.",
-        AutostartInstalled = "✔ Automaatkäivitus registreeritud: {0} --tray",
+        AutostartInstalled = "✔ Automaatkäivitus registreeritud: {0}",
         AutostartInfo = "  Rakendus käivitub salve järgmisel sisselogimisel.",
         AutostartRemoved = "✔ Automaatkäivituse kirje eemaldatud.",
         AutostartStartNow = "Käivitada taustal kohe? [J/n] ",
@@ -1033,15 +1033,15 @@ static class Loc
         DeleteConfirmBody = "Kustutada see seadme vastendus?",
         ErrorTitle = "Viga",
         SaveError = "Viga salvestamisel:\n{0}",
-        NoRecentDevices = "Hiljutised seadmed puuduvad",
-        QuickSelectHint = "Ühenda ja lahuta seade kiirvalikuloendi (▾) täitmiseks",
+        NoRecentDevices = "USB-seadmeid pole ühendatud",
+        QuickSelectHint = "▾ kuvab kõik praegu ühendatud USB-seadmed",
 
         MenuUninstall         = "Eemalda automaatkäivitus…",
         UninstallConfirmTitle = "Eemalda automaatkäivitus",
         UninstallConfirmBody  = "Eemalda automaatkäivituse kirje ja välju?",
     };
 
-    static LocStrings Lv => new()
+    static LocStrings Lv => new()Lv
     {
         AppName = "USB Event",
         MenuEditConfig = "Rediģēt konfigurāciju…",
@@ -1071,7 +1071,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Automātisko startēšanu var instalēt tikai ar publicēto .exe.",
         AutostartPublishHint = "  Vispirms palaidiet 'dotnet publish'.",
         RegistryNotAccessible = "Reģistra atslēga nav pieejama.",
-        AutostartInstalled = "✔ Automātiskā startēšana reģistrēta: {0} --tray",
+        AutostartInstalled = "✔ Automātiskā startēšana reģistrēta: {0}",
         AutostartInfo = "  Lietotne startēs paziņojumu apgabalā nākamajā pieteikšanās reizē.",
         AutostartRemoved = "✔ Automātiskās startēšanas ieraksts noņemts.",
         AutostartStartNow = "Startēt fonā tagad? [J/n] ",
@@ -1092,15 +1092,15 @@ static class Loc
         DeleteConfirmBody = "Dzēst šo ierīces kartējumu?",
         ErrorTitle = "Kļūda",
         SaveError = "Kļūda, saglabājot:\n{0}",
-        NoRecentDevices = "Nav nesenu ierīču",
-        QuickSelectHint = "Pievienojiet un atvienojiet ierīci, lai aizpildītu ātrās atlases sarakstu (▾)",
+        NoRecentDevices = "Nav pievienotu USB ierīču",
+        QuickSelectHint = "▾ rāda visas pašlaik pievienotās USB ierīces",
 
         MenuUninstall         = "Noņemt automātisko startēšanu…",
         UninstallConfirmTitle = "Noņemt automātisko startēšanu",
         UninstallConfirmBody  = "Noņemt automātiskās startēšanas ierakstu un aizvērt?",
     };
 
-    static LocStrings Lt => new()
+    static LocStrings Lt => new()Lt
     {
         AppName = "USB Event",
         MenuEditConfig = "Redaguoti konfigūraciją…",
@@ -1130,7 +1130,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Automatinis paleidimas gali būti įdiegtas tik su publikuotu .exe.",
         AutostartPublishHint = "  Pirmiausia paleiskite 'dotnet publish'.",
         RegistryNotAccessible = "Registro raktas nepasiekiamas.",
-        AutostartInstalled = "✔ Automatinis paleidimas užregistruotas: {0} --tray",
+        AutostartInstalled = "✔ Automatinis paleidimas užregistruotas: {0}",
         AutostartInfo = "  Programa bus paleista sisteminėje juostoje kito prisijungimo metu.",
         AutostartRemoved = "✔ Automatinio paleidimo įrašas pašalintas.",
         AutostartStartNow = "Paleisti fone dabar? [T/n] ",
@@ -1151,15 +1151,15 @@ static class Loc
         DeleteConfirmBody = "Ištrinti šį įrenginio susiejimą?",
         ErrorTitle = "Klaida",
         SaveError = "Klaida išsaugant:\n{0}",
-        NoRecentDevices = "Nėra naujausių įrenginių",
-        QuickSelectHint = "Prijunkite ir atjunkite įrenginį, kad užpildytumėte greito pasirinkimo sąrašą (▾)",
+        NoRecentDevices = "Nėra prijungtų USB įrenginių",
+        QuickSelectHint = "▾ rodo visus šiuo metu prijungtus USB įrenginius",
 
         MenuUninstall         = "Pašalinti automatinį paleidimą…",
         UninstallConfirmTitle = "Pašalinti automatinį paleidimą",
         UninstallConfirmBody  = "Pašalinti automatinio paleidimo įrašą ir uždaryti?",
     };
 
-    static LocStrings Pl => new()
+    static LocStrings Pl => new()Pl
     {
         AppName = "USB Event",
         MenuEditConfig = "Edytuj konfigurację…",
@@ -1189,7 +1189,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Autostart można zainstalować tylko z opublikowanym plikiem .exe.",
         AutostartPublishHint = "  Najpierw uruchom 'dotnet publish'.",
         RegistryNotAccessible = "Klucz rejestru jest niedostępny.",
-        AutostartInstalled = "✔ Autostart zarejestrowany: {0} --tray",
+        AutostartInstalled = "✔ Autostart zarejestrowany: {0}",
         AutostartInfo = "  Aplikacja uruchomi się w zasobniku przy następnym logowaniu.",
         AutostartRemoved = "✔ Wpis autostartu usunięty.",
         AutostartStartNow = "Uruchomić w tle teraz? [T/n] ",
@@ -1210,15 +1210,15 @@ static class Loc
         DeleteConfirmBody = "Usunąć to mapowanie urządzenia?",
         ErrorTitle = "Błąd",
         SaveError = "Błąd podczas zapisywania:\n{0}",
-        NoRecentDevices = "Brak ostatnich urządzeń",
-        QuickSelectHint = "Podłącz i odłącz urządzenie, aby wypełnić listę szybkiego wyboru (▾)",
+        NoRecentDevices = "Brak podłączonych urządzeń USB",
+        QuickSelectHint = "▾ wyświetla wszystkie aktualnie podłączone urządzenia USB",
 
         MenuUninstall         = "Usuń autostart…",
         UninstallConfirmTitle = "Usuń autostart",
         UninstallConfirmBody  = "Usunąć wpis autostartu i wyjść?",
     };
 
-    static LocStrings Cs => new()
+    static LocStrings Cs => new()Cs
     {
         AppName = "USB Event",
         MenuEditConfig = "Upravit konfiguraci…",
@@ -1248,7 +1248,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Automatické spuštění lze nainstalovat pouze s publikovaným souborem .exe.",
         AutostartPublishHint = "  Nejprve spusťte 'dotnet publish'.",
         RegistryNotAccessible = "Klíč registru není přístupný.",
-        AutostartInstalled = "✔ Automatické spuštění registrováno: {0} --tray",
+        AutostartInstalled = "✔ Automatické spuštění registrováno: {0}",
         AutostartInfo = "  Aplikace se spustí na hlavním panelu při příštím přihlášení.",
         AutostartRemoved = "✔ Záznam automatického spuštění odebrán.",
         AutostartStartNow = "Spustit na pozadí nyní? [A/n] ",
@@ -1269,15 +1269,15 @@ static class Loc
         DeleteConfirmBody = "Odstranit toto mapování zařízení?",
         ErrorTitle = "Chyba",
         SaveError = "Chyba při ukládání:\n{0}",
-        NoRecentDevices = "Žádná nedávná zařízení",
-        QuickSelectHint = "Připojte a odpojte zařízení, abyste naplnili seznam rychlého výběru (▾)",
+        NoRecentDevices = "Žádná připojená zařízení USB",
+        QuickSelectHint = "▾ zobrazuje všechna aktuálně připojená zařízení USB",
 
         MenuUninstall         = "Odebrat automatické spuštění…",
         UninstallConfirmTitle = "Odebrat automatické spuštění",
         UninstallConfirmBody  = "Odebrat záznam automatického spuštění a ukončit?",
     };
 
-    static LocStrings Hr => new()
+    static LocStrings Hr => new()Hr
     {
         AppName = "USB Event",
         MenuEditConfig = "Uredi konfiguraciju…",
@@ -1307,7 +1307,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Automatsko pokretanje može se instalirati samo s objavljenim .exe-om.",
         AutostartPublishHint = "  Najprije pokrenite 'dotnet publish'.",
         RegistryNotAccessible = "Ključ registra nije dostupan.",
-        AutostartInstalled = "✔ Automatsko pokretanje registrirano: {0} --tray",
+        AutostartInstalled = "✔ Automatsko pokretanje registrirano: {0}",
         AutostartInfo = "  Aplikacija će se pokrenuti u sistemskoj traci pri sljedećoj prijavi.",
         AutostartRemoved = "✔ Unos automatskog pokretanja uklonjen.",
         AutostartStartNow = "Pokrenuti u pozadini sada? [D/n] ",
@@ -1328,15 +1328,15 @@ static class Loc
         DeleteConfirmBody = "Izbrisati ovo mapiranje uređaja?",
         ErrorTitle = "Greška",
         SaveError = "Greška pri spremanju:\n{0}",
-        NoRecentDevices = "Nema nedavnih uređaja",
-        QuickSelectHint = "Spojite i odvojite uređaj za popunjavanje popisa brzog odabira (▾)",
+        NoRecentDevices = "Nema spojenih USB uređaja",
+        QuickSelectHint = "▾ prikazuje sve trenutno spojene USB uređaje",
 
         MenuUninstall         = "Ukloni automatsko pokretanje…",
         UninstallConfirmTitle = "Ukloni automatsko pokretanje",
         UninstallConfirmBody  = "Ukloniti unos automatskog pokretanja i izaći?",
     };
 
-    static LocStrings Sq => new()
+    static LocStrings Sq => new()Sq
     {
         AppName = "USB Event",
         MenuEditConfig = "Ndrysho konfigurimin…",
@@ -1366,7 +1366,7 @@ static class Loc
         AutostartDotnetWarning = "⚠ Nisja automatike mund të instalohet vetëm me .exe të publikuar.",
         AutostartPublishHint = "  Ekzekutoni fillimisht 'dotnet publish'.",
         RegistryNotAccessible = "Çelësi i regjistrit nuk është i aksesueshëm.",
-        AutostartInstalled = "✔ Nisja automatike u regjistrua: {0} --tray",
+        AutostartInstalled = "✔ Nisja automatike u regjistrua: {0}",
         AutostartInfo = "  Aplikacioni do të niset në ikonën e sistemit në hyrjen tjetër.",
         AutostartRemoved = "✔ Shënimi i nisjes automatike u hoq.",
         AutostartStartNow = "Të niset në sfond tani? [P/n] ",
@@ -1387,8 +1387,8 @@ static class Loc
         DeleteConfirmBody = "Fshini këtë hartë pajisje?",
         ErrorTitle = "Gabim",
         SaveError = "Gabim gjatë ruajtjes:\n{0}",
-        NoRecentDevices = "Nuk ka pajisje të fundit",
-        QuickSelectHint = "Lidhni dhe shkëputni një pajisje për të mbushur listën e zgjedhjes së shpejtë (▾)",
+        NoRecentDevices = "Nuk ka pajisje USB të lidhura",
+        QuickSelectHint = "▾ shfaq të gjitha pajisjet USB të lidhura aktualisht",
 
         MenuUninstall         = "Hiq nisjen automatike…",
         UninstallConfirmTitle = "Hiq nisjen automatike",

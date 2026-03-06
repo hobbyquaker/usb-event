@@ -304,18 +304,39 @@ sealed class ConfigEditorForm : Form
         historyBtn.FlatAppearance.BorderColor = Border;
         historyBtn.Click += (_, _) =>
         {
-            var recent = DeviceHistory.Load();
-            var popup  = new ContextMenuStrip();
+            var current     = Program.GetCurrentUsbDevices();
+            var postStartIds = DeviceHistory.GetPostStartIds();
+            var postStartSet = new HashSet<string>(postStartIds, StringComparer.OrdinalIgnoreCase);
+
+            // Post-start: most recently connected first (reverse insertion order)
+            var postStart = postStartIds
+                .AsEnumerable()
+                .Reverse()
+                .Select(id => current.FirstOrDefault(d => d.DeviceId.Equals(id, StringComparison.OrdinalIgnoreCase)))
+                .Where(d => !string.IsNullOrEmpty(d.DeviceId))
+                .ToList();
+
+            // At-start: currently connected but not in the post-start set, sorted alphabetically by name
+            var atStart = current
+                .Where(d => !postStartSet.Contains(d.DeviceId))
+                .OrderBy(d => string.IsNullOrWhiteSpace(d.Name) ? d.DeviceId : d.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+            var allSorted = postStart.Concat(atStart).ToList();
+
+            var popup = new ContextMenuStrip();
             if (Theme.Dark) popup.Renderer = new DarkMenuRenderer();
-            if (!recent.Any())
+            if (!allSorted.Any())
             {
                 popup.Items.Add(new ToolStripMenuItem(Loc.T.NoRecentDevices) { Enabled = false });
             }
             else
             {
-                foreach (var d in recent)
+                foreach (var d in allSorted)
                 {
-                    var label    = d.Name != d.DeviceId ? $"{d.Name}  —  {d.DeviceId}" : d.DeviceId;
+                    var label    = d.Name != d.DeviceId && !string.IsNullOrWhiteSpace(d.Name)
+                        ? $"{d.Name}  —  {d.DeviceId}"
+                        : d.DeviceId;
                     var captured = d.DeviceId;
                     popup.Items.Add(label, null, (_, _) => txtId.Text = captured);
                 }
