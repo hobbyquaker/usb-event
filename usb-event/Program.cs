@@ -212,7 +212,10 @@ class Program
             logger?.Write(FormatDeviceInfo(device), color);
 
             if (isConnect)
+            {
                 DeviceHistory.Record(deviceId, device["Name"]?.ToString() ?? string.Empty);
+                DeviceHistory.MarkPostStart(deviceId);
+            }
 
             if (mapping is null) return;
 
@@ -443,6 +446,24 @@ class Program
     static DeviceMapping? FindMapping(AppConfig config, string deviceId) =>
         config.Devices.FirstOrDefault(m =>
             deviceId.StartsWith(m.DeviceId, StringComparison.OrdinalIgnoreCase));
+
+    internal static IReadOnlyList<RecentDevice> GetCurrentUsbDevices()
+    {
+        try
+        {
+            var list = new List<RecentDevice>();
+            using var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity");
+            foreach (ManagementObject device in searcher.Get())
+            {
+                if (!IsUsbDevice(device)) continue;
+                var deviceId = device["DeviceID"]?.ToString() ?? string.Empty;
+                var name     = device["Name"]?.ToString() ?? string.Empty;
+                list.Add(new RecentDevice(deviceId, string.IsNullOrWhiteSpace(name) ? deviceId : name, DateTime.MinValue /* not a history entry */));
+            }
+            return list;
+        }
+        catch { return []; }
+    }
 
     static bool IsUsbDevice(ManagementBaseObject device)
     {

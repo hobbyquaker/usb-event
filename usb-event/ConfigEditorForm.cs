@@ -304,16 +304,32 @@ sealed class ConfigEditorForm : Form
         historyBtn.FlatAppearance.BorderColor = Border;
         historyBtn.Click += (_, _) =>
         {
-            var recent = DeviceHistory.Load();
+            var current       = Program.GetCurrentUsbDevices();
+            var postStartIds  = DeviceHistory.GetPostStartIds();
+            var postStartSet  = new HashSet<string>(postStartIds, StringComparer.OrdinalIgnoreCase);
+
+            var postStartDevices = postStartIds
+                .Select(id => current.FirstOrDefault(d => d.DeviceId.Equals(id, StringComparison.OrdinalIgnoreCase)))
+                .Where(d => d is not null)
+                .Select(d => d!)
+                .ToList();
+
+            var atStartDevices = current
+                .Where(d => !postStartSet.Contains(d.DeviceId))
+                .OrderBy(d => d.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+            var sorted = postStartDevices.Concat(atStartDevices).ToList();
+
             var popup  = new ContextMenuStrip();
             if (Theme.Dark) popup.Renderer = new DarkMenuRenderer();
-            if (!recent.Any())
+            if (!sorted.Any())
             {
                 popup.Items.Add(new ToolStripMenuItem(Loc.T.NoRecentDevices) { Enabled = false });
             }
             else
             {
-                foreach (var d in recent)
+                foreach (var d in sorted)
                 {
                     var label    = d.Name != d.DeviceId ? $"{d.DeviceId} ({d.Name})" : d.DeviceId;
                     var captured = d.DeviceId;
