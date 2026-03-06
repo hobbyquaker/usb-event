@@ -1,5 +1,7 @@
 # usb-event 🚀🧸
 
+> Windows-only .NET 10 WinForms tray application that monitors USB plug/unplug events via WMI and launches or kills configured executables accordingly. 
+
 No-nonsense helper for Windows users with too many USB toys: plug something in, launch what you need; unplug, shut it down. Lives quietly in your tray, speaks multiple languages, and just works. 🧘‍♂️🔌
 
 ## What it’s for 🎯
