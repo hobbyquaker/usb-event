@@ -31,17 +31,19 @@ class Program
         if (args.Contains("--uninstall"))      { UninstallAutostart();     return; }
         if (args.Contains("--stop"))           { StopRunningInstance();    return; }
 
-        var trayMode   = args.Contains("--tray");
+        if (args.Contains("--tray"))
+            Console.Error.WriteLine(Loc.T.TrayDeprecated);
+        var consoleMode = args.Contains("--console");
         var (configDir, _) = GetConfigDir();
         var configPath  = Path.Combine(configDir, "config.yaml");
         var isNewConfig = EnsureConfigExists(configPath);
         var config      = LoadConfig(configPath);
         var running     = new ConcurrentDictionary<string, Process>(StringComparer.OrdinalIgnoreCase);
 
-        if (trayMode)
-            RunAsTray(config, running, configPath, openEditor: isNewConfig);
-        else
+        if (consoleMode)
             RunAsConsole(config, configPath, running);
+        else
+            RunAsTray(config, running, configPath, openEditor: isNewConfig);
     }
 
     // ── Tray-Modus ─────────────────────────────────────────────────────────────
@@ -346,7 +348,7 @@ class Program
         if (answer.Length == 0 || (!answer.StartsWith("n", StringComparison.OrdinalIgnoreCase)
                                 && !answer.StartsWith("н", StringComparison.OrdinalIgnoreCase)))
         {
-            Process.Start(new ProcessStartInfo(exePath, "--tray") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(exePath) { UseShellExecute = true });
         }
     }
 
@@ -355,7 +357,7 @@ class Program
         var exePath = RegisterAutostart();
         if (exePath is null) return;
 
-        Process.Start(new ProcessStartInfo(exePath, "--tray") { UseShellExecute = true });
+        Process.Start(new ProcessStartInfo(exePath) { UseShellExecute = true });
     }
 
     // Registers the HKCU Run key entry and returns the exe path, or null if running under dotnet.exe.
@@ -374,7 +376,7 @@ class Program
         using var key = Registry.CurrentUser.OpenSubKey(RegistryRunKey, writable: true)
             ?? throw new InvalidOperationException(Loc.T.RegistryNotAccessible);
 
-        key.SetValue(AppDisplayName, $"\"{exePath}\" --tray");
+        key.SetValue(AppDisplayName, $"\"{exePath}\"");
         return exePath;
     }
 
