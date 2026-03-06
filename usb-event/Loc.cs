@@ -56,6 +56,7 @@ sealed class LocStrings
     public required string NoRecentDevices { get; init; }
     public required string QuickSelectHint { get; init; }
 
+    public required string MenuInstall            { get; init; }
     public required string MenuUninstall         { get; init; }
     public required string UninstallConfirmTitle { get; init; }
     public required string UninstallConfirmBody  { get; init; }
@@ -151,6 +152,7 @@ static class Loc
         NoRecentDevices = "No recent devices",
         QuickSelectHint = "Plug and unplug a device to populate the quick-select list (▾)",
 
+        MenuInstall           = "Register autostart…",
         MenuUninstall         = "Remove autostart…",
         UninstallConfirmTitle = "Remove autostart",
         UninstallConfirmBody  = "Remove the autostart entry and exit?",
@@ -210,6 +212,7 @@ static class Loc
         NoRecentDevices = "Kein Geräteverlauf",
         QuickSelectHint = "Gerät ein- und ausstecken, um die Schnellauswahl (▾) zu befüllen",
 
+        MenuInstall           = "Autostart einrichten…",
         MenuUninstall         = "Autostart entfernen…",
         UninstallConfirmTitle = "Autostart entfernen",
         UninstallConfirmBody  = "Autostart-Eintrag entfernen und beenden?",
@@ -269,6 +272,7 @@ static class Loc
         NoRecentDevices = "Aucun appareil récent",
         QuickSelectHint = "Branchez et débranchez un appareil pour alimenter la liste rapide (▾)",
 
+        MenuInstall           = "Enregistrer l'autostart…",
         MenuUninstall         = "Supprimer l'autostart…",
         UninstallConfirmTitle = "Supprimer l'autostart",
         UninstallConfirmBody  = "Supprimer l'entrée d'autostart et quitter ?",
@@ -328,6 +332,7 @@ static class Loc
         NoRecentDevices = "Sin dispositivos recientes",
         QuickSelectHint = "Conecta y desconecta un dispositivo para llenar la selección rápida (▾)",
 
+        MenuInstall           = "Registrar inicio automático…",
         MenuUninstall         = "Eliminar inicio automático…",
         UninstallConfirmTitle = "Eliminar inicio automático",
         UninstallConfirmBody  = "¿Eliminar la entrada de inicio automático y salir?",
@@ -387,6 +392,7 @@ static class Loc
         NoRecentDevices = "Нет недавних устройств",
         QuickSelectHint = "Подключите и отключите устройство, чтобы заполнить быстрый список (▾)",
 
+        MenuInstall           = "Зарегистрировать автозапуск…",
         MenuUninstall         = "Удалить автозапуск…",
         UninstallConfirmTitle = "Удалить автозапуск",
         UninstallConfirmBody  = "Удалить запись автозапуска и завершить работу?",
@@ -446,6 +452,7 @@ static class Loc
         NoRecentDevices = "履歴なし",
         QuickSelectHint = "デバイスを接続・切断してクイック選択 (▾) を使えるようにする",
 
+        MenuInstall           = "自動起動を登録…",
         MenuUninstall         = "自動起動を削除…",
         UninstallConfirmTitle = "自動起動を削除",
         UninstallConfirmBody  = "自動起動エントリを削除して終了しますか？",
@@ -505,6 +512,7 @@ static class Loc
         NoRecentDevices = "无最近设备",
         QuickSelectHint = "插拔设备以填充快速选择列表 (▾)",
 
+        MenuInstall           = "注册自启动…",
         MenuUninstall         = "移除自启动…",
         UninstallConfirmTitle = "移除自启动",
         UninstallConfirmBody  = "移除自启动项并退出？",
@@ -564,6 +572,7 @@ static class Loc
         NoRecentDevices = "لا توجد أجهزة حديثة",
         QuickSelectHint = "وصّل الجهاز وافصله لملء قائمة الاختيار السريع (▾)",
 
+        MenuInstall           = "تسجيل التشغيل التلقائي…",
         MenuUninstall         = "إزالة التشغيل التلقائي…",
         UninstallConfirmTitle = "إزالة التشغيل التلقائي",
         UninstallConfirmBody  = "هل تريد إزالة إدخال التشغيل التلقائي والخروج؟",
@@ -623,6 +632,7 @@ static class Loc
         NoRecentDevices = "Tidak ada perangkat terbaru",
         QuickSelectHint = "Hubungkan dan cabut perangkat untuk mengisi daftar pilihan cepat (▾)",
 
+        MenuInstall           = "Daftarkan mulai otomatis…",
         MenuUninstall         = "Hapus mulai otomatis…",
         UninstallConfirmTitle = "Hapus mulai otomatis",
         UninstallConfirmBody  = "Hapus entri mulai otomatis dan keluar?",
@@ -682,6 +692,7 @@ static class Loc
         NoRecentDevices = "최근 장치 없음",
         QuickSelectHint = "장치를 연결하고 분리하여 빠른 선택 목록 (▾)을 채우세요",
 
+        MenuInstall           = "자동 시작 등록…",
         MenuUninstall         = "자동 시작 제거…",
         UninstallConfirmTitle = "자동 시작 제거",
         UninstallConfirmBody  = "자동 시작 항목을 제거하고 종료하시겠습니까?",
@@ -741,6 +752,7 @@ static class Loc
         NoRecentDevices = "Sem dispositivos recentes",
         QuickSelectHint = "Conecte e desconecte um dispositivo para preencher a lista de seleção rápida (▾)",
 
+        MenuInstall           = "Registrar inicialização automática…",
         MenuUninstall         = "Remover inicialização automática…",
         UninstallConfirmTitle = "Remover inicialização automática",
         UninstallConfirmBody  = "Remover a entrada de inicialização automática e sair?",
@@ -800,6 +812,7 @@ static class Loc
         NoRecentDevices = "कोई हाल के डिवाइस नहीं",
         QuickSelectHint = "त्वरित चयन सूची (▾) भरने के लिए डिवाइस कनेक्ट और डिसकनेक्ट करें",
 
+        MenuInstall           = "ऑटोस्टार्ट पंजीकृत करें…",
         MenuUninstall         = "ऑटोस्टार्ट हटाएँ…",
         UninstallConfirmTitle = "ऑटोस्टार्ट हटाएँ",
         UninstallConfirmBody  = "ऑटोस्टार्ट प्रविष्टि हटाएँ और बाहर निकलें?",
@@ -859,6 +872,7 @@ static class Loc
         NoRecentDevices = "Inga senaste enheter",
         QuickSelectHint = "Anslut och koppla ur en enhet för att fylla snabbvalslistan (▾)",
 
+        MenuInstall           = "Registrera autostart…",
         MenuUninstall         = "Ta bort autostart…",
         UninstallConfirmTitle = "Ta bort autostart",
         UninstallConfirmBody  = "Ta bort autostart-post och avsluta?",
@@ -918,6 +932,7 @@ static class Loc
         NoRecentDevices = "Ingen nylige enheter",
         QuickSelectHint = "Koble til og fra en enhet for å fylle hurtigvalglisten (▾)",
 
+        MenuInstall           = "Registrer autostart…",
         MenuUninstall         = "Fjern autostart…",
         UninstallConfirmTitle = "Fjern autostart",
         UninstallConfirmBody  = "Fjerne autostart-oppføringen og avslutte?",
@@ -977,6 +992,7 @@ static class Loc
         NoRecentDevices = "Ei viimeaikaisia laitteita",
         QuickSelectHint = "Yhdistä ja irrota laite täyttääksesi pikavalintaluettelon (▾)",
 
+        MenuInstall           = "Rekisteröi automaattinen käynnistys…",
         MenuUninstall         = "Poista automaattinen käynnistys…",
         UninstallConfirmTitle = "Poista automaattinen käynnistys",
         UninstallConfirmBody  = "Poistetaanko automaattinen käynnistys -merkintä ja suljetaanko ohjelma?",
@@ -1036,6 +1052,7 @@ static class Loc
         NoRecentDevices = "Hiljutised seadmed puuduvad",
         QuickSelectHint = "Ühenda ja lahuta seade kiirvalikuloendi (▾) täitmiseks",
 
+        MenuInstall           = "Registreeri automaatkäivitus…",
         MenuUninstall         = "Eemalda automaatkäivitus…",
         UninstallConfirmTitle = "Eemalda automaatkäivitus",
         UninstallConfirmBody  = "Eemalda automaatkäivituse kirje ja välju?",
@@ -1095,6 +1112,7 @@ static class Loc
         NoRecentDevices = "Nav nesenu ierīču",
         QuickSelectHint = "Pievienojiet un atvienojiet ierīci, lai aizpildītu ātrās atlases sarakstu (▾)",
 
+        MenuInstall           = "Reģistrēt automātisko startēšanu…",
         MenuUninstall         = "Noņemt automātisko startēšanu…",
         UninstallConfirmTitle = "Noņemt automātisko startēšanu",
         UninstallConfirmBody  = "Noņemt automātiskās startēšanas ierakstu un aizvērt?",
@@ -1154,6 +1172,7 @@ static class Loc
         NoRecentDevices = "Nėra naujausių įrenginių",
         QuickSelectHint = "Prijunkite ir atjunkite įrenginį, kad užpildytumėte greito pasirinkimo sąrašą (▾)",
 
+        MenuInstall           = "Registruoti automatinį paleidimą…",
         MenuUninstall         = "Pašalinti automatinį paleidimą…",
         UninstallConfirmTitle = "Pašalinti automatinį paleidimą",
         UninstallConfirmBody  = "Pašalinti automatinio paleidimo įrašą ir uždaryti?",
@@ -1213,6 +1232,7 @@ static class Loc
         NoRecentDevices = "Brak ostatnich urządzeń",
         QuickSelectHint = "Podłącz i odłącz urządzenie, aby wypełnić listę szybkiego wyboru (▾)",
 
+        MenuInstall           = "Zarejestruj autostart…",
         MenuUninstall         = "Usuń autostart…",
         UninstallConfirmTitle = "Usuń autostart",
         UninstallConfirmBody  = "Usunąć wpis autostartu i wyjść?",
@@ -1272,6 +1292,7 @@ static class Loc
         NoRecentDevices = "Žádná nedávná zařízení",
         QuickSelectHint = "Připojte a odpojte zařízení, abyste naplnili seznam rychlého výběru (▾)",
 
+        MenuInstall           = "Registrovat automatické spuštění…",
         MenuUninstall         = "Odebrat automatické spuštění…",
         UninstallConfirmTitle = "Odebrat automatické spuštění",
         UninstallConfirmBody  = "Odebrat záznam automatického spuštění a ukončit?",
@@ -1331,6 +1352,7 @@ static class Loc
         NoRecentDevices = "Nema nedavnih uređaja",
         QuickSelectHint = "Spojite i odvojite uređaj za popunjavanje popisa brzog odabira (▾)",
 
+        MenuInstall           = "Registriraj automatsko pokretanje…",
         MenuUninstall         = "Ukloni automatsko pokretanje…",
         UninstallConfirmTitle = "Ukloni automatsko pokretanje",
         UninstallConfirmBody  = "Ukloniti unos automatskog pokretanja i izaći?",
@@ -1390,6 +1412,7 @@ static class Loc
         NoRecentDevices = "Nuk ka pajisje të fundit",
         QuickSelectHint = "Lidhni dhe shkëputni një pajisje për të mbushur listën e zgjedhjes së shpejtë (▾)",
 
+        MenuInstall           = "Regjistro nisjen automatike…",
         MenuUninstall         = "Hiq nisjen automatike…",
         UninstallConfirmTitle = "Hiq nisjen automatike",
         UninstallConfirmBody  = "Hiq shënimin e nisjes automatike dhe dil?",
