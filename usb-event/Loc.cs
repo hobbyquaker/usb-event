@@ -55,6 +55,10 @@ sealed class LocStrings
     public required string SaveError { get; init; }
     public required string NoRecentDevices { get; init; }
     public required string QuickSelectHint { get; init; }
+
+    public required string MenuUninstall         { get; init; }
+    public required string UninstallConfirmTitle { get; init; }
+    public required string UninstallConfirmBody  { get; init; }
 }
 
 static class Loc
@@ -146,6 +150,10 @@ static class Loc
         SaveError = "Error while saving:\n{0}",
         NoRecentDevices = "No recent devices",
         QuickSelectHint = "Plug and unplug a device to populate the quick-select list (▾)",
+
+        MenuUninstall         = "Remove autostart…",
+        UninstallConfirmTitle = "Remove autostart",
+        UninstallConfirmBody  = "Remove the autostart entry and exit?",
     };
 
     static LocStrings De => new()
@@ -201,6 +209,10 @@ static class Loc
         SaveError = "Fehler beim Speichern:\n{0}",
         NoRecentDevices = "Kein Geräteverlauf",
         QuickSelectHint = "Gerät ein- und ausstecken, um die Schnellauswahl (▾) zu befüllen",
+
+        MenuUninstall         = "Autostart entfernen…",
+        UninstallConfirmTitle = "Autostart entfernen",
+        UninstallConfirmBody  = "Autostart-Eintrag entfernen und beenden?",
     };
 
     static LocStrings Fr => new()
@@ -256,6 +268,10 @@ static class Loc
         SaveError = "Erreur lors de l'enregistrement:\n{0}",
         NoRecentDevices = "Aucun appareil récent",
         QuickSelectHint = "Branchez et débranchez un appareil pour alimenter la liste rapide (▾)",
+
+        MenuUninstall         = "Supprimer l'autostart…",
+        UninstallConfirmTitle = "Supprimer l'autostart",
+        UninstallConfirmBody  = "Supprimer l'entrée d'autostart et quitter ?",
     };
 
     static LocStrings Es => new()
@@ -311,6 +327,10 @@ static class Loc
         SaveError = "Error al guardar:\n{0}",
         NoRecentDevices = "Sin dispositivos recientes",
         QuickSelectHint = "Conecta y desconecta un dispositivo para llenar la selección rápida (▾)",
+
+        MenuUninstall         = "Eliminar inicio automático…",
+        UninstallConfirmTitle = "Eliminar inicio automático",
+        UninstallConfirmBody  = "¿Eliminar la entrada de inicio automático y salir?",
     };
 
     static LocStrings Ru => new()
@@ -366,6 +386,10 @@ static class Loc
         SaveError = "Ошибка сохранения:\n{0}",
         NoRecentDevices = "Нет недавних устройств",
         QuickSelectHint = "Подключите и отключите устройство, чтобы заполнить быстрый список (▾)",
+
+        MenuUninstall         = "Удалить автозапуск…",
+        UninstallConfirmTitle = "Удалить автозапуск",
+        UninstallConfirmBody  = "Удалить запись автозапуска и завершить работу?",
     };
 
     static LocStrings Ja => new()
@@ -421,6 +445,10 @@ static class Loc
         SaveError = "保存中にエラーが発生しました:\n{0}",
         NoRecentDevices = "履歴なし",
         QuickSelectHint = "デバイスを接続・切断してクイック選択 (▾) を使えるようにする",
+
+        MenuUninstall         = "自動起動を削除…",
+        UninstallConfirmTitle = "自動起動を削除",
+        UninstallConfirmBody  = "自動起動エントリを削除して終了しますか？",
     };
 
     static LocStrings Zh => new()
@@ -476,6 +504,10 @@ static class Loc
         SaveError = "保存时出错:\n{0}",
         NoRecentDevices = "无最近设备",
         QuickSelectHint = "插拔设备以填充快速选择列表 (▾)",
+
+        MenuUninstall         = "移除自启动…",
+        UninstallConfirmTitle = "移除自启动",
+        UninstallConfirmBody  = "移除自启动项并退出？",
     };
 
     static LocStrings Ar => new()
@@ -531,6 +563,10 @@ static class Loc
         SaveError = "خطأ أثناء الحفظ:\n{0}",
         NoRecentDevices = "لا توجد أجهزة حديثة",
         QuickSelectHint = "وصّل الجهاز وافصله لملء قائمة الاختيار السريع (▾)",
+
+        MenuUninstall         = "إزالة التشغيل التلقائي…",
+        UninstallConfirmTitle = "إزالة التشغيل التلقائي",
+        UninstallConfirmBody  = "هل تريد إزالة إدخال التشغيل التلقائي والخروج؟",
     };
 
     static LocStrings Id => new()
@@ -586,6 +622,10 @@ static class Loc
         SaveError = "Kesalahan saat menyimpan:\n{0}",
         NoRecentDevices = "Tidak ada perangkat terbaru",
         QuickSelectHint = "Hubungkan dan cabut perangkat untuk mengisi daftar pilihan cepat (▾)",
+
+        MenuUninstall         = "Hapus mulai otomatis…",
+        UninstallConfirmTitle = "Hapus mulai otomatis",
+        UninstallConfirmBody  = "Hapus entri mulai otomatis dan keluar?",
     };
 
     static LocStrings Ko => new()
@@ -641,6 +681,10 @@ static class Loc
         SaveError = "저장 중 오류 발생:\n{0}",
         NoRecentDevices = "최근 장치 없음",
         QuickSelectHint = "장치를 연결하고 분리하여 빠른 선택 목록 (▾)을 채우세요",
+
+        MenuUninstall         = "자동 시작 제거…",
+        UninstallConfirmTitle = "자동 시작 제거",
+        UninstallConfirmBody  = "자동 시작 항목을 제거하고 종료하시겠습니까?",
     };
 
     static LocStrings Pt => new()
@@ -696,6 +740,10 @@ static class Loc
         SaveError = "Erro ao salvar:\n{0}",
         NoRecentDevices = "Sem dispositivos recentes",
         QuickSelectHint = "Conecte e desconecte um dispositivo para preencher a lista de seleção rápida (▾)",
+
+        MenuUninstall         = "Remover inicialização automática…",
+        UninstallConfirmTitle = "Remover inicialização automática",
+        UninstallConfirmBody  = "Remover a entrada de inicialização automática e sair?",
     };
 
     static LocStrings Hi => new()
@@ -751,6 +799,10 @@ static class Loc
         SaveError = "सहेजते समय त्रुटि:\n{0}",
         NoRecentDevices = "कोई हाल के डिवाइस नहीं",
         QuickSelectHint = "त्वरित चयन सूची (▾) भरने के लिए डिवाइस कनेक्ट और डिसकनेक्ट करें",
+
+        MenuUninstall         = "ऑटोस्टार्ट हटाएँ…",
+        UninstallConfirmTitle = "ऑटोस्टार्ट हटाएँ",
+        UninstallConfirmBody  = "ऑटोस्टार्ट प्रविष्टि हटाएँ और बाहर निकलें?",
     };
 
     static LocStrings Sv => new()
@@ -806,6 +858,10 @@ static class Loc
         SaveError = "Fel vid sparning:\n{0}",
         NoRecentDevices = "Inga senaste enheter",
         QuickSelectHint = "Anslut och koppla ur en enhet för att fylla snabbvalslistan (▾)",
+
+        MenuUninstall         = "Ta bort autostart…",
+        UninstallConfirmTitle = "Ta bort autostart",
+        UninstallConfirmBody  = "Ta bort autostart-post och avsluta?",
     };
 
     static LocStrings No => new()
@@ -861,6 +917,10 @@ static class Loc
         SaveError = "Feil ved lagring:\n{0}",
         NoRecentDevices = "Ingen nylige enheter",
         QuickSelectHint = "Koble til og fra en enhet for å fylle hurtigvalglisten (▾)",
+
+        MenuUninstall         = "Fjern autostart…",
+        UninstallConfirmTitle = "Fjern autostart",
+        UninstallConfirmBody  = "Fjerne autostart-oppføringen og avslutte?",
     };
 
     static LocStrings Fi => new()
@@ -916,6 +976,10 @@ static class Loc
         SaveError = "Virhe tallennuksessa:\n{0}",
         NoRecentDevices = "Ei viimeaikaisia laitteita",
         QuickSelectHint = "Yhdistä ja irrota laite täyttääksesi pikavalintaluettelon (▾)",
+
+        MenuUninstall         = "Poista automaattinen käynnistys…",
+        UninstallConfirmTitle = "Poista automaattinen käynnistys",
+        UninstallConfirmBody  = "Poistetaanko automaattinen käynnistys -merkintä ja suljetaanko ohjelma?",
     };
 
     static LocStrings Et => new()
@@ -971,6 +1035,10 @@ static class Loc
         SaveError = "Viga salvestamisel:\n{0}",
         NoRecentDevices = "Hiljutised seadmed puuduvad",
         QuickSelectHint = "Ühenda ja lahuta seade kiirvalikuloendi (▾) täitmiseks",
+
+        MenuUninstall         = "Eemalda automaatkäivitus…",
+        UninstallConfirmTitle = "Eemalda automaatkäivitus",
+        UninstallConfirmBody  = "Eemalda automaatkäivituse kirje ja välju?",
     };
 
     static LocStrings Lv => new()
@@ -1026,6 +1094,10 @@ static class Loc
         SaveError = "Kļūda, saglabājot:\n{0}",
         NoRecentDevices = "Nav nesenu ierīču",
         QuickSelectHint = "Pievienojiet un atvienojiet ierīci, lai aizpildītu ātrās atlases sarakstu (▾)",
+
+        MenuUninstall         = "Noņemt automātisko startēšanu…",
+        UninstallConfirmTitle = "Noņemt automātisko startēšanu",
+        UninstallConfirmBody  = "Noņemt automātiskās startēšanas ierakstu un aizvērt?",
     };
 
     static LocStrings Lt => new()
@@ -1081,6 +1153,10 @@ static class Loc
         SaveError = "Klaida išsaugant:\n{0}",
         NoRecentDevices = "Nėra naujausių įrenginių",
         QuickSelectHint = "Prijunkite ir atjunkite įrenginį, kad užpildytumėte greito pasirinkimo sąrašą (▾)",
+
+        MenuUninstall         = "Pašalinti automatinį paleidimą…",
+        UninstallConfirmTitle = "Pašalinti automatinį paleidimą",
+        UninstallConfirmBody  = "Pašalinti automatinio paleidimo įrašą ir uždaryti?",
     };
 
     static LocStrings Pl => new()
@@ -1136,6 +1212,10 @@ static class Loc
         SaveError = "Błąd podczas zapisywania:\n{0}",
         NoRecentDevices = "Brak ostatnich urządzeń",
         QuickSelectHint = "Podłącz i odłącz urządzenie, aby wypełnić listę szybkiego wyboru (▾)",
+
+        MenuUninstall         = "Usuń autostart…",
+        UninstallConfirmTitle = "Usuń autostart",
+        UninstallConfirmBody  = "Usunąć wpis autostartu i wyjść?",
     };
 
     static LocStrings Cs => new()
@@ -1191,6 +1271,10 @@ static class Loc
         SaveError = "Chyba při ukládání:\n{0}",
         NoRecentDevices = "Žádná nedávná zařízení",
         QuickSelectHint = "Připojte a odpojte zařízení, abyste naplnili seznam rychlého výběru (▾)",
+
+        MenuUninstall         = "Odebrat automatické spuštění…",
+        UninstallConfirmTitle = "Odebrat automatické spuštění",
+        UninstallConfirmBody  = "Odebrat záznam automatického spuštění a ukončit?",
     };
 
     static LocStrings Hr => new()
@@ -1246,6 +1330,10 @@ static class Loc
         SaveError = "Greška pri spremanju:\n{0}",
         NoRecentDevices = "Nema nedavnih uređaja",
         QuickSelectHint = "Spojite i odvojite uređaj za popunjavanje popisa brzog odabira (▾)",
+
+        MenuUninstall         = "Ukloni automatsko pokretanje…",
+        UninstallConfirmTitle = "Ukloni automatsko pokretanje",
+        UninstallConfirmBody  = "Ukloniti unos automatskog pokretanja i izaći?",
     };
 
     static LocStrings Sq => new()
@@ -1301,5 +1389,9 @@ static class Loc
         SaveError = "Gabim gjatë ruajtjes:\n{0}",
         NoRecentDevices = "Nuk ka pajisje të fundit",
         QuickSelectHint = "Lidhni dhe shkëputni një pajisje për të mbushur listën e zgjedhjes së shpejtë (▾)",
+
+        MenuUninstall         = "Hiq nisjen automatike…",
+        UninstallConfirmTitle = "Hiq nisjen automatike",
+        UninstallConfirmBody  = "Hiq shënimin e nisjes automatike dhe dil?",
     };
 }
