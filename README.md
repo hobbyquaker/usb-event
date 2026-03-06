@@ -4,19 +4,10 @@
 
 No-nonsense helper for Windows users with too many USB toys: plug something in, launch what you need; unplug, shut it down. Lives quietly in your tray, speaks multiple languages, and just works. 🧘‍♂️🔌
 
-## Screenshots 📸
-
-<img src="docs/tray-menu.png" alt="Tray menu" width="240"> <img src="docs/config-window.png" alt="Configuration window" width="480">
-
 ## What it’s for 🎯
 - Auto-launch your streaming stack when the camera/mic shows up 📹🎙️
 - Kick off backup/import workflows when drives appear 💾📥
 - Stop background apps when devices leave, so your CPU can chill 💤🧊
-
-## Vibe 😎
-- 100% vibe-coded with help from **Claude Sonnet 4.6** and **GPT-5.1-Codex-Max** 🤖✨
-- Dark mode aware, tray-native, YAML-savvy 🌙📜
-- Zero fluff, minimal clicks 🪶🖱️
 
 ## Download ⬇️
 Get the [latest release](https://github.com/hobbyquaker/usb-event/releases/latest):
@@ -24,6 +15,17 @@ Get the [latest release](https://github.com/hobbyquaker/usb-event/releases/lates
 `usb-event-vX.Y.Z-installer.exe` — guided install wizard with comfortable autostart option; config stored in `%APPDATA%\usb-event\`.
 
 > **Requires [.NET 10 Desktop Runtime (x64)](https://dotnet.microsoft.com/download/dotnet/10.0)** to be installed.
+
+## Screenshots 📸
+
+<img src="docs/tray-menu.png" alt="Tray menu" width="240"> <img src="docs/config-window.png" alt="Configuration window" width="480">
+
+## Vibe 😎
+- 100% vibe-coded with help from **Claude Sonnet 4.6** 🤖✨
+- Dark mode aware, tray-native, YAML-savvy 🌙📜
+- Zero fluff, minimal clicks 🪶🖱️
+
+
 
 ## License
 MIT License. See below.
