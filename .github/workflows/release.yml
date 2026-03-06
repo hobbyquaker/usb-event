@@ -39,7 +39,7 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: Publish portable
+      - name: Publish
         run: >
           dotnet publish usb-event/usb-event.csproj
           -c Release
@@ -58,13 +58,6 @@ jobs:
           /DMyTag=${{ steps.version.outputs.TAG }}
           usb-event\installer.iss
 
-      - name: Rename portable artifact
-        shell: pwsh
-        run: >
-          Rename-Item
-          -Path "usb-event\bin\Publish\usb-event.exe"
-          -NewName "usb-event-${{ steps.version.outputs.TAG }}-portable.exe"
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -75,5 +68,4 @@ jobs:
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: |
-            usb-event/bin/Publish/usb-event-${{ steps.version.outputs.TAG }}-portable.exe
             usb-event/bin/Publish/usb-event-${{ steps.version.outputs.TAG }}-installer.exe

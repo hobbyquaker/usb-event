@@ -13,18 +13,11 @@ No-nonsense helper for Windows users with too many USB toys: plug something in, 
 - Zero fluff, minimal clicks 🪶🖱️
 
 ## Download ⬇️
-Get the [latest release](https://github.com/hobbyquaker/usb-event/releases/latest) — two flavors available:
+Get the [latest release](https://github.com/hobbyquaker/usb-event/releases/latest):
 
-| | Portable | Installer ✅ recommended |
-|---|---|---|
-| **File** | `usb-event-vX.Y.Z-portable.exe` | `usb-event-vX.Y.Z-installer.exe` |
-| **Setup** | Drop anywhere, run directly | Guided install wizard |
-| **Autostart** | `usb-event.exe --install` / `--uninstall` | Comfortable autostart option during setup |
-| **Config location** | Next to the .exe | `%APPDATA%\usb-event\` |
+`usb-event-vX.Y.Z-installer.exe` — guided install wizard with comfortable autostart option; config stored in `%APPDATA%\usb-event\`.
 
 > **Requires [.NET 10 Desktop Runtime (x64)](https://dotnet.microsoft.com/download/dotnet/10.0)** to be installed.
-
-The **installer** is recommended because it sets up autostart comfortably and places the config in a standard user directory.
 
 ## License
 MIT License. See below.
