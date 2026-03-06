@@ -4,6 +4,10 @@
 
 No-nonsense helper for Windows users with too many USB toys: plug something in, launch what you need; unplug, shut it down. Lives quietly in your tray, speaks multiple languages, and just works. 🧘‍♂️🔌
 
+## Screenshots 📸
+
+<img src="docs/tray-menu.png" alt="Tray menu" width="240"> <img src="docs/config-window.png" alt="Configuration window" width="480">
+
 ## What it’s for 🎯
 - Auto-launch your streaming stack when the camera/mic shows up 📹🎙️
 - Kick off backup/import workflows when drives appear 💾📥
