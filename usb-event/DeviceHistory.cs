@@ -11,6 +11,24 @@ static class DeviceHistory
 
     static string? _path;
 
+    // in-memory ordered list of device IDs that connected after program start (most-recently-connected first)
+    static readonly List<string> _postStartIds = [];
+
+    public static void MarkPostStart(string deviceId)
+    {
+        lock (_postStartIds)
+        {
+            _postStartIds.RemoveAll(id => id.Equals(deviceId, StringComparison.OrdinalIgnoreCase));
+            _postStartIds.Insert(0, deviceId);
+        }
+    }
+
+    public static IReadOnlyList<string> GetPostStartIds()
+    {
+        lock (_postStartIds)
+            return [.._postStartIds];
+    }
+
     public static void Init(string configDir)
         => _path = Path.Combine(configDir, "device-history.json");
 
