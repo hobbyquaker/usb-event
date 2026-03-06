@@ -2,9 +2,9 @@
 
 > Windows-only .NET 10 WinForms tray application that monitors USB plug/unplug events via WMI and launches or kills configured executables accordingly. 
 
+## What it’s for 🎯
 No-nonsense helper for Windows users with too many USB toys: plug something in, launch what you need; unplug, shut it down. Lives quietly in your tray, speaks multiple languages, and just works. 🧘‍♂️🔌
 
-## What it’s for 🎯
 - Auto-launch your streaming stack when the camera/mic shows up 📹🎙️
 - Kick off backup/import workflows when drives appear 💾📥
 - Stop background apps when devices leave, so your CPU can chill 💤🧊
