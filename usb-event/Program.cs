@@ -111,6 +111,7 @@ class Program
         };
         menu.Items.Add(installItem);
         menu.Items.Add(uninstallItem);
+        menu.Items.Add(new ToolStripSeparator());
 
         menu.Items.Add(Loc.T.MenuExit, null, (_, _) =>
         {
